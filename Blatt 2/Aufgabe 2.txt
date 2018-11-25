@@ -1,0 +1,90 @@
+Q = tree(p_1,p_2,p_3,q_1,q_3,p_4,q_2,p_5,q_5,q_4); T = tree()
+
+Iteration 1:
+p = p1, U = {s1}, L={}, C={}
+|L+U+C|>1 is false
+no deltion, T.insert(s1) -> T=tree(s1)
+U+C={s1}
+s'=s1, sl=null, s''=s1, sr=null -> Q=tree(p_2,p_3,q_1,q_3,p_4,q_2,p_5,q_5,q_4)
+intersection_points = {}
+
+Iteration 2:
+p = p2, U = {s2}, L={}, C={}
+|L+U+C|>1 is false
+no deltion, T.insert(s2) -> T=tree(s2,s1)
+U+C={s2}
+s'=s2, sl=null, s''=s2, sr=s1
+FINDNEWEVENT(s''=s2,sr=s1,p=p2) => s1 and s2 intersect below the current sweep line
+                                => Q.insert(p12)
+                                => Q=tree(p_12,p_3,q_1,q_3,p_4,q_2,p_5,q_5,q_4)
+intersection_points = {}
+                                
+Iteration 3:
+p = p12, U = {}, L={}, C={s1,s2}
+|L+U+C|>1 is true => p is intersection of s1 and s2
+T.delete(s1,s2), T.insert(s1,s2) -> T=tree(s1,s2)
+U+C={s1,s2}
+s'=s1, sl=null, s''=s2, sr=null -> Q=tree(p_3,q_1,q_3,p_4,q_2,p_5,q_5,q_4)
+intersection_points = {p_12}
+
+Iteration 4:
+p = p3, U = {s3}, L={}, C={}
+|L+U+C|>1 is false
+no deltion, T.insert(s3) -> T=tree(s3,s1,s2)
+U+C={s3}
+s'=s3, sl=null, s''=s3, sr=s2
+FINDNEWEVENT(s''=s3, sr=s2, p=p3) -> no intersection 
+                                  -> Q=tree(q_1,q_3,p_4,q_2,p_5,q_5,q_4)
+intersection_points = {p_12}
+
+Iteration 5:
+p = q1=q3, U = {}, L={s1,s3}, C={}
+|L+U+C|>1 is true => p is intersection of s1 and s3
+T.delete(s1), T.delete(s3), no insertion -> T=tree(s2)
+U+C={}
+sl=null, sr=null -> Q=tree(p_4,q_2,p_5,q_5,q_4)
+intersection_points = {p_12,q_1=q_3}
+
+Iteration 6:
+p = p4, U = {s4}, L={}, C={}
+|L+U+C|>1 is false
+no deltion, T.insert(s4) -> T=tree(s4,s2)
+U+C={s4}
+s'=s4, sl=null, s''=s4, sr=s2
+FINDNEWEVENT(s''=s4, sr=s2, p=p4) -> no intersection 
+                                  -> Q=tree(q_2,p_5,q_5,q_4)
+intersection_points = {p_12,q_1=q_3}
+
+Iteration 7:
+p = q2=p5, U = {s5}, L={s2}, C={}
+|L+U+C|>1 is true => p is intersection for s2 and s5
+T.delete(s2), T.insert(s5) -> T=tree(s4,s5)
+U+C={s5}
+s'=s5, sl=s4, s''=s5, sr=null 
+FINDNEWEVENT(sl=s4, s'=s5, p=q2=p5) -> no intersection 
+                                    -> Q=tree(q_5,q_4)
+intersection_points = {p_12,q_1=q_3,q_2=p_5}
+
+Iteration 8:
+p = q5, U = {}, L={s5}, C={}
+|L+U+C|>1 is false
+T.delete(s5) -> T=tree(s4)
+U+C={}
+sl=null, sr=null -> Q=tree(q_4)
+intersection_points = {p_12,q_1=q_3,q_2=p_5}
+
+Iteration 9:
+p = q4, U = {}, L={s4}, C={}
+|L+U+C|>1 is false
+T.delete(s4) -> T=tree()
+U+C={}
+sl=null, sr=null -> Q=tree()
+intersection_points = {p_12,q_1=q_3,q_2=p_5}
+
+
+
+
+
+
+
+
