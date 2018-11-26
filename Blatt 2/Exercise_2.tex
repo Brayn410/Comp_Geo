@@ -153,6 +153,37 @@ Exercise 2 \\[-3pt]
 \vspace*{-10mm}
 
 \section*{Exercise 1 (Point between Line Segments)}
+Given a balanced binary tree which lexicographically stores a tuple $(x_{hi}, x_{lo})$ for each line segment, where $x_{hi}$ and $x_{lo}$ are the x coordinate for the upper and lower end points.\\
+Find the two disjunct line segments that define the region in which the query point $p \in D$ is:\\
+
+node = tree.root\\
+left\_line\_segment = null\\
+right\_line\_segment = null\\
+
+for i = 0;  i < tree.height; i++\\
+\hspace*{10mm}if node.$x_{hi} < p_x$ \&\& node.$x_{lo} < p_x$\\
+\hspace*{20mm}left\_line\_segment = node\\
+\hspace*{20mm}node = node.right\_child\\
+\hspace*{10mm}else if node.$x_{hi} >= p_x$ \&\& node.$x_{lo} >= p_x$\\
+\hspace*{20mm}right\_line\_segment = node\\
+\hspace*{20mm}node = node.left\_child\\
+\hspace*{10mm}else\\
+\hspace*{20mm}position = $(x_{lo} - x_{hi}) * (p_y - 1) - (-1) * (p_x - x_{hi})$\\
+\hspace*{20mm}if position > 0\\
+\hspace*{30mm}left\_line\_segment = node\\
+\hspace*{30mm}node = node.right\_child\\
+\hspace*{20mm}else\\
+\hspace*{30mm}right\_line\_segment = node\\
+\hspace*{30mm}node = node.left\_child\\
+
+Query point p is in the region between$^1$ the two lines segments:\\
+$\overline{(left\_line\_segment.x_{hi}, 1)\hspace*{3mm}(left\_line\_segment.x_{lo}, 0)}$\\
+$\overline{(right\_line\_segment.x_{hi}, 1)\hspace*{3mm}(right\_line\_segment.x_{lo}, 0)}$\\
+
+$^1$If a point lies exactly on a line, it is treated as if the point lies in the region to the left of that line.\\
+
+The algorithm does not work for arbitrary line segments.\\
+Arbitrary line segments can have intersections which causes multiple problems. For example could the two line segments, that define the region in which p lies, be on different branches. This would require to traverse the tree two times. At the same time, could the region, in which the point p lies, be defined by more than two line segments. This would mean that the tree would then have to be traversed an unknown amount of times.
 \newpage
 
 
