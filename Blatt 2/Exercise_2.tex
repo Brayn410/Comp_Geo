@@ -1,4 +1,4 @@
-\documentclass[english, fontsize=12pt, paper=a4, twoside=false, open=right, draft=true, pagesize=auto, version=last, DIV=16]{scrartcl}
+\documentclass[english, fontsize=12pt, paper=a4, twoside=false, draft=true, pagesize=auto, version=last, DIV=16]{scrartcl}
 
 
 \let\counterwithout\relax
@@ -14,7 +14,7 @@
 % Zur nummerierten Aufzählung, mit automatischem Einrücken
 \usepackage{paralist}
 \usepackage{enumitem}
-
+\usepackage{csquotes}
 
 
 % mitwachsender Implikationspfeil mit Text
@@ -25,8 +25,8 @@
 
 % Java Code Einbinden
 \usepackage{listings}
-\usepackage{color}  
-\usepackage[svgnames]{xcolor} 
+\usepackage{color}
+\usepackage[svgnames]{xcolor}
 
 
 
@@ -42,7 +42,7 @@
 \usepackage{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{stmaryrd}
-\usepackage{extarrows} 
+\usepackage{extarrows}
 \usepackage{ulem}
 
 
@@ -50,7 +50,7 @@
 %Zur Bildnummerierung
 \usepackage{chngcntr}
 \usepackage{mathtools}
-\usepackage{amsmath}		
+\usepackage{amsmath}
 %Zur Verwendung von "chngcntr": \counterwithin{figure}{section}
 
 
@@ -137,6 +137,8 @@
 \usetikzlibrary{calc,patterns,through,intersections}
 %\usepackage{tkz-berge}
 
+\newcommand*\bigO{\mathcal{O}}
+
 
 
 \begin{document}
@@ -197,9 +199,9 @@ $p = p_1, U = \{s_1\}, L=\emptyset, C=\emptyset$ \\
 $|L \cup U \cup C|>1 \text{ is false}$ \\
 $\text{no deletion, }T.insert(s1) \Rightarrow T=tree(s_1)$ \\
 $U \cup C=\{s_1\}$ \\
-$s'=s_1, s_l=null$ \\ 
+$s'=s_1, s_l=null$ \\
 {\scshape{FindNewEvent}}$(s_l,s',p) \Rightarrow$ $s_l$ and $s'$ do not intersect below the current sweep line. \\
-$s''=s_1, s_r=null$ \\ 
+$s''=s_1, s_r=null$ \\
 {\scshape{FindNewEvent}}$(s'',s_r,p) \Rightarrow$ $s''$ and $s_r$ do not intersect below the current sweep line. \\
 $\hspace*{49.5mm} \Rightarrow Q=tree(p_2,p_3,q_1,q_3,p_4,q_2,p_5,q_5,q_4)$ \\
 intersection\_points $= \emptyset$ \par
@@ -209,9 +211,9 @@ $p = p_2, U = \{s_2\}, L=\emptyset, C=\emptyset$ \\
 $|L \cup U \cup C|>1 \text{ is false}$ \\
 $\text{no deletion, }T.insert(s_2) \Rightarrow T=tree(s_2,s_1)$ \\
 $U \cup C=\{s_2\}$ \\
-$s'=s_2, s_l=null$ \\ 
+$s'=s_2, s_l=null$ \\
 {\scshape{FindNewEvent}}$(s_l,s',p) \Rightarrow$ $s_l$ and $s'$ do not intersect below the current sweep line. \\
-$s''=s_2, s_r=s_1$ \\ 
+$s''=s_2, s_r=s_1$ \\
 {\scshape{FindNewEvent}}$(s'',s_r,p) \Rightarrow$ $s''$ and $s_r$ intersect below the current sweep line in $p_{s_1,s_2}$. \\
 $\hspace*{49.5mm} \Rightarrow Q.insert(p_{s_1,s_2})$ \\
 $\hspace*{49.5mm} \Rightarrow Q=tree(p_{s_1,s_2},p_3,q_1,q_3,p_4,q_2,p_5,q_5,q_4)$ \\
@@ -222,9 +224,9 @@ $p = p_{s_1,s_2}, U = \emptyset, L=\emptyset, C=\{s_1,s_2\}$ \\
 $|L \cup U \cup C|>1 \text{ is true} \Rightarrow $ $p = p_{s_1,s_2}$ is intersection of $s_1$ and $s_2$ \\
 $T.delete(s_1), \ T.delete(s_2), \ T.insert(s_1), \ T.insert(s_2) \ \Rightarrow T=tree(s_1,s_2)$ \\
 $U \cup C=\{s_1, s_2\}$ \\
-$s'=s_1, s_l=null$ \\ 
+$s'=s_1, s_l=null$ \\
 {\scshape{FindNewEvent}}$(s_l,s',p) \Rightarrow$ $s_l$ and $s'$ do not intersect below the current sweep line. \\
-$s''=s_2, s_r=null$ \\ 
+$s''=s_2, s_r=null$ \\
 {\scshape{FindNewEvent}}$(s'',s_r,p) \Rightarrow$ $s''$ and $s_r$ do not intersect below the current sweep line. \\
 $\hspace*{49.5mm} \Rightarrow Q=tree(p_3,q_1,q_3,p_4,q_2,p_5,q_5,q_4)$ \\
 intersection\_points $= \{p_{s_1,s_2}\}$ \par
@@ -235,9 +237,9 @@ $p = p_3, U = \{s_3\}, L=\emptyset, C=\emptyset$ \\
 $|L \cup U \cup C|>1 \text{ is false}$ \\
 $\text{no deletion, }T.insert(s_3) \Rightarrow T=tree(s_3,s_1,s_2)$ \\
 $U \cup C=\{s_3\}$ \\
-$s'=s_3, s_l=null$ \\ 
+$s'=s_3, s_l=null$ \\
 {\scshape{FindNewEvent}}$(s_l,s',p) \Rightarrow$ $s_l$ and $s'$ do not intersect below the current sweep line. \\
-$s''=s_3, s_r=s_2$ \\ 
+$s''=s_3, s_r=s_2$ \\
 {\scshape{FindNewEvent}}$(s'',s_r,p) \Rightarrow$ $s''$ and $s_r$ do not intersect below the current sweep line. \\
 $\hspace*{49.5mm} \Rightarrow Q=tree(q_1,q_3,p_4,q_2,p_5,q_5,q_4)$ \\
 intersection\_points $= \{p_{s_1,s_2}\}$ \par
@@ -247,7 +249,7 @@ $p = q_1=q_3, U = \emptyset, L=\{s_1,s_3\}, C=\emptyset$ \\
 $|L \cup U \cup C|>1 \text{ is true} \Rightarrow $ $p = q_1=q_3$ is intersection of $s_1$ and $s_3$ \\
 $T.delete(s_1), T.delete(s_3) \text{, no insertion} \Rightarrow T=tree(s_2)$ \\
 $U \cup C=\emptyset$ \\
-$s_l=null, s_r=null$ \\ 
+$s_l=null, s_r=null$ \\
 {\scshape{FindNewEvent}}$(s_l,s_r,p) \Rightarrow$ $s_l$ and $s_r$ do not intersect below the current sweep line. \\
 $\hspace*{49.5mm} \Rightarrow Q=tree(p_4,q_2,p_5,q_5,q_4)$ \\
 intersection\_points $= \{p_{s_1,s_2},q_1=q_3\}$ \par
@@ -257,9 +259,9 @@ $p = p_4, U = \{s_4\}, L=\emptyset, C=\emptyset$ \\
 $|L \cup U \cup C|>1 \text{ is false}$ \\
 $\text{no deletion}, \ T.insert(s_4) \Rightarrow T=tree(s_4,s_2)$ \\
 $U \cup C=\{s_4\}$ \\
-$s'=s_4, s_l=null$ \\ 
+$s'=s_4, s_l=null$ \\
 {\scshape{FindNewEvent}}$(s_l,s',p) \Rightarrow$ $s_l$ and $s'$ do not intersect below the current sweep line. \\
-$s''=s_4, s_r=s_2$ \\ 
+$s''=s_4, s_r=s_2$ \\
 {\scshape{FindNewEvent}}$(s'',s_r,p) \Rightarrow$ $s''$ and $s_r$ do not intersect below the current sweep line. \\
 $\hspace*{49.5mm} \Rightarrow Q=tree(q_2,p_5,q_5,q_4)$ \\
 intersection\_points $= \{p_{s_1,s_2},q_1=q_3\}$ \par
@@ -269,9 +271,9 @@ $p = q_2=p_5, U = \{s_5\}, L=\{s_2\}, C=\emptyset$ \\
 $|L \cup U \cup C|>1 \text{ is true} \Rightarrow $ $p = q_2=p_5$ is intersection of $s_2$ and $s_5$ \\
 $T.delete(s_2), T.insert(s_5) \Rightarrow T=tree(s_4,s_5)$ \\
 $U \cup C=\{s_5\}$ \\
-$s'=s_5, s_l=s_4$ \\ 
+$s'=s_5, s_l=s_4$ \\
 {\scshape{FindNewEvent}}$(s_l,s',p) \Rightarrow$ $s_l$ and $s'$ do not intersect below the current sweep line. \\
-$s''=s_5, s_r=null$ \\ 
+$s''=s_5, s_r=null$ \\
 {\scshape{FindNewEvent}}$(s'',s_r,p) \Rightarrow$ $s''$ and $s_r$ do not intersect below the current sweep line. \\
 $\hspace*{49.5mm} \Rightarrow Q=tree(q_5,q_4)$ \\
 intersection\_points $= \{p_{s_1,s_2},q_1=q_3,q_2=p_5\}$ \par
@@ -282,7 +284,7 @@ $p = q_5, U = \emptyset, L=\{s_5\}, C=\emptyset$ \\
 $|L \cup U \cup C|>1 \text{ is false}$ \\
 $T.delete(s_5), \text{no insertion} \Rightarrow T=tree(s_4)$ \\
 $U \cup C=\emptyset$ \\
-$s_l=null, s_r=null$ \\ 
+$s_l=null, s_r=null$ \\
 {\scshape{FindNewEvent}}$(s_l,s_r,p) \Rightarrow$ $s_l$ and $s_r$ do not intersect below the current sweep line. \\
 $\hspace*{49.5mm} \Rightarrow Q=tree(q_4)$ \\
 intersection\_points $= \{p_{s_1,s_2},q_1=q_3,q_2=p_5\}$ \par
@@ -292,7 +294,7 @@ $p = q_4, U = \emptyset, L=\{s_4\}, C=\emptyset$ \\
 $|L \cup U \cup C|>1 \text{ is false}$ \\
 $T.delete(s_4), \text{no insertion} \Rightarrow T=tree()$ \\
 $U \cup C=\emptyset$ \\
-$s_l=null, s_r=null$ \\ 
+$s_l=null, s_r=null$ \\
 {\scshape{FindNewEvent}}$(s_l,s_r,p) \Rightarrow$ $s_l$ and $s_r$ do not intersect below the current sweep line. \\
 $\hspace*{49.5mm} \Rightarrow Q=tree()$ \\
 intersection\_points $= \{p_{s_1,s_2},q_1=q_3,q_2=p_5\}$ \par
@@ -303,8 +305,134 @@ intersection\_points $= \{p_{s_1,s_2},q_1=q_3,q_2=p_5\}$ \par
 
 
 \section*{Exercise 3 (Pyramids Skyline)}
-\newpage
+\algrenewcommand\algorithmicrequire{\textbf{Input:}}
+\algrenewcommand\algorithmicensure{\textbf{Output:}}
 
+We use a divide-and-conquer approach to compute the pyramid skyline efficiently, which
+follows the concept of merge sort. The following algorithm operates on sets of skylines
+(which are themselves assumed to be sets of line segments),
+so we have to convert the pyramid representations to skylines: But this is easy: if a
+pyramid is represented by the top corner-coordinate $(x,y)$, then this yields the skyline
+$\{ \overline{(0,y-x), (x,y)}, \overline{(x,y), (0,y+x)} \}$.
+
+As we see in the above pyramid skyline, the assumption is that the $x$-axis is the horizon
+and every pyramid has topmost corner with positive $y$-coordinate. In particular, every
+skyline constructed from such pyramid skylines will start and end with a point with
+coordinate $y = 0$.
+
+Before applying the following algorithm, we need to (potentially) simplify the set of
+pyramids: We want to ensure that no pyramids share a left or right side, as this will
+create difficult special cases in the following computations
+
+This is easy: Sort the set of pyramids (possible in $\bigO(n\log n)$ lexicographically
+with respect to the key ($x$-coordinate of left corner, $y$-coordinate of top corner).
+We can then iterate through this set and compare $x$-coordinates of the left corners of
+subsequent pyramids: if they are equal, then we remove the one with lower top coordinates
+as it will be fully contained in the other pyramid and thus cannot contribute to the
+skyline. This can clearly be done in $\bigO(n)$. We can do the same with the right
+coordinate contributing another $\bigO(n\log n)$.
+
+\begin{algorithm}
+  \caption{$\text{\textsc{Skyline}}(T)$}
+  \begin{algorithmic}[1]
+    \Require $T$ the set of individual skylines
+    \Ensure $S$ the combined skyline
+    \State $l := \mathrm{length}(T)$
+    \If{$l < 2$}
+      \State \Return $T$
+    \EndIf
+    \State Partition $T$ into two sets $T_1$, $T_2$ of (almost) same size, (e.g.\ split in
+      the middle)
+    \State $fst = \text{\textsc{Skyline}}(T_1)$
+    \State $snd = \text{\textsc{Skyline}}(T_2)$
+    \State\Return \textsc{MergeSkylines}$(fst, snd)$
+  \end{algorithmic}
+\end{algorithm}
+
+This is the outer part of the algorithm, the actual computations happen in
+\textsc{MergeSkylines}. We give an informal description:
+
+Assume we merge two skylines $T_1$, $T_2$ which consist of $|T_1|=n$, $|T_2|=m$ line
+segments respectively. In the following, a line segment will \textit{start} at its left end
+and \textit{end} at its right end, since the algorithm will traverse both skylines from left
+to right. We can assume that the skylines are sorted from left to right.
+
+\begin{enumerate}
+  \item Ensure that the first (i.e.\ left-most) line segment in $T_1$ starts at lower
+    $x$-coordinate than the first one of $T_2$. If this is not the case, rename the sets
+    accordingly.
+
+    Note that, by the preprocessing, $T_1$ and $T_2$ cannot start with the same
+    $x$-coordinate.
+  \item If the end point of the last (right-most) line segment of $T_1$ has $x$-coordinate
+    less than or equal to the $x$-coordinate of the start point of the first line segment
+    of $T_1$, then there is nothing to do as the skylines are disjoint, so return
+    $S=T_1\cup T_2$.
+  \item Initialize the new skyline $S = \emptyset$.
+  \item Move the first line segment from $T_1$ to $S$ (by the choices above it is the
+    left-most and must be in the skyline)
+  \item While $T_1 \neq \emptyset$ and $T_2\neq\emptyset$ do the following, where $t_1$
+    and $t_2$ shall be the first line segments in $T_1$ and $T_2$ respectively.
+    \begin{enumerate}
+      \item If the endpoint of $t_2$ lies left of the starting point of $t_1$ (by
+        construction thus far the end point of the skyline $S$), then remove $t_2$ as it
+        cannot occur in the skyline and restart the loop.
+      \item Otherwise check if $t_1$ and $t_2$ intersect:
+        \begin{itemize}
+          \item If they do intersect, then they cannot be collinear (by preprocessing) and
+            must intersect in a point $x$: Then denote by $t_{1,x}$ the line segment from
+            the start of $t_1$ to $x$ and by $t_{2,x}$ the line segment from $x$ to the
+            end of $t_2$. But $t_{2,x}$ cannot be a point (again by preprocessing: if some
+            line segments only meet in an endpoint of one, then we must also have
+            collinear intersecting line segments which is impossible) and by
+            construction all line segments from $T_2$ thus far must lie below the
+            constructed skyline, so $t_{1,x}$ and $t_{2,x}$ form a \enquote{valley}. We do
+            the following
+            \begin{itemize}
+              \item Add $t_{1,x}$ to $S$,
+              \item Remove $t_1$ from $T_1$,
+              \item Replace $t_2$ in $T_2$ with $t_{2,x}$
+              \item Swap $T_1$ and $T_2$. This is necessary as such an intersection means
+                we switch over from one skyline to another.
+            \end{itemize}
+            Then restart the loop.
+          \item If they do not intersect then there are again two cases:
+            \begin{itemize}
+              \item The endpoint of $t_2$ lies right of the endpoint of $t_1$. Then no
+                other element in $T_2$ can intersect with $t_1$ and hence $t_1$ must be
+                part of the skyline. Hence move $t_1$ from $T_1$ to $T_2$ and restart the
+                loop.
+
+                Note that $t_2$ might still intersect other elements of $T_1$.
+              \item If the endpoint of $t_2$ lies left of the endpoint of $t_1$, then
+                $t_2$ cannot intersect any element in $T_1$. Hence $t_2$ cannot lie on the
+                combined skyline, so remove it from $T_2$ and restart the loop.
+            \end{itemize}
+        \end{itemize}
+    \end{enumerate}
+  \item If elements in $T_2$ remain, they must be disjoint from the constructed skyline
+    $S$ so we simply return $S \cup T_2$.
+\end{enumerate}
+
+% TODO: hand-wavy
+In less formal terms, the above algorithm \enquote{walks along} $T_1$ until it intersects
+$T_2$, then continues on $T_2$ and so on until the skyline is complete. Further, for each
+iteration of the while loop (5.) we discard one element of $T_1$ or $T_2$ and all the
+checks we need to do are clearly possible in constant time, so \textsc{MergeSkylines} has
+runtime in $\bigO(m+n) = \bigO(|T_1|+|T_2|)$. Also, each line segment in $T_1$ or $T_2$
+can intersect at most one line segment from the other set by the structure of skylines, so
+the amount of line segments in the new skyline can be at most $m+n$ as well. Hence, if $T$
+is the complexity function for \textsc{Skyline}, then we obtain the following recurrence
+relation
+\begin{align*}
+  T(n) &= 2 T\left(\frac n2\right) + \bigO(\text{\textsc{MergeSkylines}}) \\
+       &= 2 T\left(\frac n2\right) + \bigO\left(\frac n2 + \frac n2\right) \\
+       &= 2 T\left(\frac n2\right) + \bigO(n)
+\end{align*}
+By the Master Theorem we now know that $T \in \bigO(n\log n)$, so, together with the
+preprocessing, the algorithm has a total complexity of $\bigO(n\log n)$.
+
+\newpage
 
 \end{document}
 
