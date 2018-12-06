@@ -180,17 +180,24 @@ Exercise 3 \\[-3pt]
 (4) True. See defintion of IncidentFace. \\
 
 \vspace*{10mm}
+\newpage
 \begin{figure}[t]
 \centering
 \includegraphics[width=\textwidth]{images/task_1_example.png}
 \caption{An example of a doubly-connected edge list for a simple subdivision. Figure is taken from \cite{berg2008computational}.}
 \label{fig:task_1_example}
 \end{figure}
-\newpage
-
 
 \textbf{b)} Give an example of a doubly-connected edge list where for an edge $\vec{e}$ the faces IncidentFace($\vec{e}$) and IncidentFace(Twin($\vec{e}$)) are the same. \par
 \medskip
+Consider this example: \\
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{images/task_1_b.png}
+\label{fig:task_1_b}
+\end{figure}
+
+This is a doubly-connected edge list where $f_1 = \text{IncidentFace}(\vec{e}_{1,1}) = \text{IncidentFace}(\text{Twin}(\vec{e}_{1,1})) = \text{IncidentFace}(\text{Twin}(\vec{e}_{1,2})) = \text{IncidentFace}(\vec{e}_{1,2}) = f_1 $ holds.
 
 \vspace*{10mm}
 \textbf{c)} Given a doubly-connected edge list representation for a subdivision where
