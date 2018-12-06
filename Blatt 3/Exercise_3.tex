@@ -194,18 +194,22 @@ Consider this example: \\
 \begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{images/task_1_b.png}
+\caption{A very simple example of a doubly-connected edge list.}
 \label{fig:task_1_b}
 \end{figure}
 
 This is a doubly-connected edge list where $f_1 = \text{IncidentFace}(\vec{e}_{1,1}) = \text{IncidentFace}(\text{Twin}(\vec{e}_{1,1})) = \text{IncidentFace}(\text{Twin}(\vec{e}_{1,2})) = \text{IncidentFace}(\vec{e}_{1,2}) = f_1 $ holds.
 
 \vspace*{10mm}
+\newpage
+
 \textbf{c)} Given a doubly-connected edge list representation for a subdivision where
 \begin{align*}
 \text{Twin}(\vec{e}) = \text{Next}(\vec{e})
 \end{align*} 
 holds for every half-edge $\vec{e}$. How many faces can the subdivision have at most? \par
 \medskip
+In this case we have exactly 1 unbounded face. There are only doubly-connected edges like in figure \ref{fig:task_1_b} because this is the only case where $\text{Twin}(\vec{e}) = \text{Next}(\vec{e})$ holds. (Of course we might have many of these edges and some of them might be sharing some nodes). By definition each half-edge bounds only one face. We can easily apply the prove from \textbf{b)} here and use it to show that this is always the same face. This shows that there can only be exactly 1 unbounded face.
 
 \vspace*{10mm}
 \newpage
