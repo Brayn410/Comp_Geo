@@ -90,7 +90,7 @@
 % Python style for highlighting
 \newcommand\pythonstyle{\lstset{
 language=Python,
-basicstyle=\fontsize{10}{10}\selectfont\ttfamily , % oder \ttm 
+basicstyle=\fontsize{10}{10}\selectfont\ttfamily,  % oder \ttm, 
 otherkeywords={self},             % Add keywords here
 keywordstyle=\ttb\color{deepblue},
 emph={MyClass,__init__},          % Custom highlighting
@@ -293,75 +293,53 @@ For saving space, we only hand in our function for computing the 3-coloring, and
 \bigskip
 
 \begin{python}
-def coloring(faces, colors, next_face, used_faces):
-    if faces != []:
-        p1 = faces[next_face][0]
-        p2 = faces[next_face][1]
-        p3 = faces[next_face][2]
+# tri is the abbreviation of triangle.
+def coloring(tri, colors, next_triangle, used_triangle):
+    if tri != []:
+        p1 = tri[next_triangle][0]
+        p2 = tri[next_triangle][1]
+        p3 = tri[next_triangle][2]
 
-        used_faces[next_face] = 1
+        used_triangle[next_triangle] = 1
 
-        # Only for step one: If there is no color used yet:
-        if colors[p1] == -1 and colors[p2] == -1 and colors[p3] == -1:
+        # This can only be true in the first call of coloring(), because initial are all colors -1
+        if max(colors) == -1:
             colors[p1] = 0
             colors[p2] = 1
-            colors[p3] = 2
 
-            p1_p2_faces = [i for i in range(len(faces)) if p1 in faces[i] and p2 in faces[i] and not p3 in faces[i]]
-            p1_p3_faces = [i for i in range(len(faces)) if p1 in faces[i] and p3 in faces[i] and not p2 in faces[i]]
-            p2_p3_faces = [i for i in range(len(faces)) if p2 in faces[i] and p3 in faces[i] and not p1 in faces[i]]
+        if colors[p1] == -1 and colors[p2] != -1 and colors[p3] != -1:
+            all_possible_colors = [0,1,2]
+            all_possible_colors.remove(colors[p2])
+            all_possible_colors.remove(colors[p3])
+            colors[p1] = all_possible_colors[0]
 
-            children = p1_p2_faces + p1_p3_faces + p2_p3_faces
+        if colors[p2] == -1 and colors[p1] != -1 and colors[p3] != -1:
+            all_possible_colors = [0,1,2]
+            all_possible_colors.remove(colors[p1])
+            all_possible_colors.remove(colors[p3])
+            colors[p2] = all_possible_colors[0]
 
-            for face in children:
-                if used_faces[face] != -1:
-                    children.remove(face)
+        if colors[p3] == -1 and colors[p1] != -1 and colors[p2] != -1:
+            all_possible_colors = [0,1,2]
+            all_possible_colors.remove(colors[p1])
+            all_possible_colors.remove(colors[p2])
+            colors[p3] = all_possible_colors[0]
+        p1_p2_triangles = [i for i in range(len(tri)) if p1 in tri[i] and p2 in tri[i] and not p3 in tri[i]]
+        p1_p3_triangles = [i for i in range(len(tri)) if p1 in tri[i] and p3 in tri[i] and not p2 in tri[i]]
+        p2_p3_triangles = [i for i in range(len(tri)) if p2 in tri[i] and p3 in tri[i] and not p1 in tri[i]]
 
+        children = p1_p2_triangles + p1_p3_triangles + p2_p3_triangles
 
-            for child in children:
-                coloring(faces, colors, child, used_faces)
+        for face in children:
+            if used_triangle[face] != -1:
+                children.remove(face)
 
-
-
-
-
-        else:
-
-            if colors[p1] == -1 and colors[p2] != -1 and colors[p3] != -1:
-                all_possible_colors = [0,1,2]
-                all_possible_colors.remove(colors[p2])
-                all_possible_colors.remove(colors[p3])
-                colors[p1] = all_possible_colors[0]
-
-            if colors[p2] == -1 and colors[p1] != -1 and colors[p3] != -1:
-                all_possible_colors = [0,1,2]
-                all_possible_colors.remove(colors[p1])
-                all_possible_colors.remove(colors[p3])
-                colors[p2] = all_possible_colors[0]
-
-            if colors[p3] == -1 and colors[p1] != -1 and colors[p2] != -1:
-                all_possible_colors = [0,1,2]
-                all_possible_colors.remove(colors[p1])
-                all_possible_colors.remove(colors[p2])
-                colors[p3] = all_possible_colors[0]
-
-            p1_p2_faces = [i for i in range(len(faces)) if p1 in faces[i] and p2 in faces[i] and not p3 in faces[i]]
-            p1_p3_faces = [i for i in range(len(faces)) if p1 in faces[i] and p3 in faces[i] and not p2 in faces[i]]
-            p2_p3_faces = [i for i in range(len(faces)) if p2 in faces[i] and p3 in faces[i] and not p1 in faces[i]]
-
-            children = p1_p2_faces + p1_p3_faces + p2_p3_faces
-
-            for face in children:
-                if used_faces[face] != -1:
-                    children.remove(face)
-
-
-            for child in children:
-                coloring(faces, colors, child, used_faces)
+        for child in children:
+            coloring(tri, colors, child, used_triangle)
 
     else:
         if min(colors) == -1:
-            coloring(faces, colors, 0, used_faces)
+            coloring(tri, colors, 0, used_triangle)
 
     return colors
 \end{python}
