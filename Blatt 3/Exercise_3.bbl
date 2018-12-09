@@ -1,8 +1,65 @@
-\begin{thebibliography}{1}
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.0 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
 
-\bibitem{berg2008computational}
-Mark~de Berg, Otfried Cheong, Marc~van Kreveld, and Mark Overmars.
-\newblock {\em Computational geometry: algorithms and applications}.
-\newblock Springer-Verlag TELOS, 2008.
 
-\end{thebibliography}
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{berg2008computational}{book}{}
+      \name{author}{4}{}{%
+        {{hash=aff678a462fa10e25a9a69949be042aa}{%
+           family={Berg},
+           familyi={B\bibinitperiod},
+           given={Mark\bibnamedelima de},
+           giveni={M\bibinitperiod\bibinitdelim d\bibinitperiod}}}%
+        {{hash=4bd77450ba8d104a38bdac30dfdaa537}{%
+           family={Cheong},
+           familyi={C\bibinitperiod},
+           given={Otfried},
+           giveni={O\bibinitperiod}}}%
+        {{hash=3d59fa21cf3004cfd6cc43712546d3cf}{%
+           family={Kreveld},
+           familyi={K\bibinitperiod},
+           given={Marc\bibnamedelima van},
+           giveni={M\bibinitperiod\bibinitdelim v\bibinitperiod}}}%
+        {{hash=f90d0f3a421b04996db7eb8faf3572fd}{%
+           family={Overmars},
+           familyi={O\bibinitperiod},
+           given={Mark},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer-Verlag TELOS}%
+      }
+      \strng{namehash}{cf4c816267796881466ff72c0e717aea}
+      \strng{fullhash}{04ca5741f10c83359f4e0b1105609093}
+      \strng{bibnamehash}{cf4c816267796881466ff72c0e717aea}
+      \strng{authorbibnamehash}{cf4c816267796881466ff72c0e717aea}
+      \strng{authornamehash}{cf4c816267796881466ff72c0e717aea}
+      \strng{authorfullhash}{04ca5741f10c83359f4e0b1105609093}
+      \field{labelalpha}{Ber+08}
+      \field{sortinit}{B}
+      \field{sortinithash}{276475738cc058478c1677046f857703}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Computational geometry: algorithms and applications}
+      \field{year}{2008}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

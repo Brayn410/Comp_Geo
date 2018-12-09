@@ -68,11 +68,72 @@
 \usepackage{suetterl}
 \usepackage{calligra}
 
+% Einzelne Seite drehen
+\usepackage{lscape}
+
+
+% ----------------------------------------------------------------------------------------
+% ----------------------------------- Beginn Code einbinden ------------------------------
+% ----------------------------------------------------------------------------------------
+% Default fixed font does not support bold face
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}  % for normal
+
+% Custom colors
+\usepackage{color}
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+
+\usepackage{listings}
+
+% Python style for highlighting
+\newcommand\pythonstyle{\lstset{
+language=Python,
+basicstyle=\fontsize{10}{10}\selectfont\ttfamily , % oder \ttm 
+otherkeywords={self},             % Add keywords here
+keywordstyle=\ttb\color{deepblue},
+emph={MyClass,__init__},          % Custom highlighting
+emphstyle=\ttb\color{deepred},    % Custom highlighting style
+stringstyle=\color{deepgreen},
+frame=tb,                         % Any extra options here
+showstringspaces=false            % 
+}}
+
+
+% Python environment
+\lstnewenvironment{python}[1][]
+{
+\pythonstyle
+\lstset{#1}
+}
+{}
+
+% Python for external files
+\newcommand\pythonexternal[2][]{{
+\pythonstyle
+\lstinputlisting[#1]{#2}}}
+
+
+% ----------------------------------------------------------------------------------------
+% ------------------------------------ Ende Code einbinden -------------------------------
+% ----------------------------------------------------------------------------------------
+
+
+
 %%% Neue Kommandos/Begriffe %%%
 %\renewcommand{\thesection}{\arabic{section}}
 % Für Fußnoten ohne Nummer
 %\renewcommand{\thefootnote}{}
 
+
+% For Citations
+\usepackage[
+	backend=biber,
+	style=alphabetic,
+	sorting=nty
+]{biblatex}
+\addbibresource{bib.bib}
 
 
 % Für die Normalschrift im Abkürzungsverzeichnis, das Paket "acronym" veranlasst eine andere Schriftart bei Abkürzungen.
@@ -155,7 +216,7 @@ Exercise 3 \\[-3pt]
 \maketitle
 \vspace*{-10mm}
 
-\section*{Exercise 1 (Doubly-Connected Edge List)}
+\section*{Exercise 1 (Doubly-Connected Edge List) {\large \hfill (2 + 1 + 1 points)}}
 \textbf{a)} Which of the following equations are always true?. 
 \begin{align}
 \text{Twin}(\text{Twin}(\vec{e})) = \vec{e} \\
@@ -217,16 +278,120 @@ In this case we have exactly 1 unbounded face. There are only doubly-connected e
 
 
 
-\section*{Exercise 2 (Planar Subdivision and Point Set)}
+\section*{Exercise 2 (Planar Subdivision and Point Set) {\large \hfill (4 points)}}
 
+\section*{Exercise 3 (Planar Subdivision and Point Set) {\large \hfill (1 points)}}
+
+\section*{Exercise 4 (Planar Subdivision and Point Set) {\large \hfill (1 points)}}
 
 \newpage
 
-%
+
+\begin{landscape}
+\section*{Exercise 5 (3-Coloring of Simple Polygons) {\large \hfill (5 points)}} 
+For saving space, we only hand in our function for computing the 3-coloring, and skip all helper functions like reading the ply files or drawing the results. We encode all three colors by the numbers 0, 1 and 2. After that, we encode those numbers by real colors. But this is not part of this function. \par
+\bigskip
+
+\begin{python}
+def coloring(faces, colors, next_face, used_faces):
+    if faces != []:
+        p1 = faces[next_face][0]
+        p2 = faces[next_face][1]
+        p3 = faces[next_face][2]
+
+        used_faces[next_face] = 1
+
+        # Only for step one: If there is no color used yet:
+        if colors[p1] == -1 and colors[p2] == -1 and colors[p3] == -1:
+            colors[p1] = 0
+            colors[p2] = 1
+            colors[p3] = 2
+
+            p1_p2_faces = [i for i in range(len(faces)) if p1 in faces[i] and p2 in faces[i] and not p3 in faces[i]]
+            p1_p3_faces = [i for i in range(len(faces)) if p1 in faces[i] and p3 in faces[i] and not p2 in faces[i]]
+            p2_p3_faces = [i for i in range(len(faces)) if p2 in faces[i] and p3 in faces[i] and not p1 in faces[i]]
+
+            children = p1_p2_faces + p1_p3_faces + p2_p3_faces
+
+            for face in children:
+                if used_faces[face] != -1:
+                    children.remove(face)
+
+
+            for child in children:
+                coloring(faces, colors, child, used_faces)
+
+
+
+
+
+        else:
+
+            if colors[p1] == -1 and colors[p2] != -1 and colors[p3] != -1:
+                all_possible_colors = [0,1,2]
+                all_possible_colors.remove(colors[p2])
+                all_possible_colors.remove(colors[p3])
+                colors[p1] = all_possible_colors[0]
+
+            if colors[p2] == -1 and colors[p1] != -1 and colors[p3] != -1:
+                all_possible_colors = [0,1,2]
+                all_possible_colors.remove(colors[p1])
+                all_possible_colors.remove(colors[p3])
+                colors[p2] = all_possible_colors[0]
+
+            if colors[p3] == -1 and colors[p1] != -1 and colors[p2] != -1:
+                all_possible_colors = [0,1,2]
+                all_possible_colors.remove(colors[p1])
+                all_possible_colors.remove(colors[p2])
+                colors[p3] = all_possible_colors[0]
+
+            p1_p2_faces = [i for i in range(len(faces)) if p1 in faces[i] and p2 in faces[i] and not p3 in faces[i]]
+            p1_p3_faces = [i for i in range(len(faces)) if p1 in faces[i] and p3 in faces[i] and not p2 in faces[i]]
+            p2_p3_faces = [i for i in range(len(faces)) if p2 in faces[i] and p3 in faces[i] and not p1 in faces[i]]
+
+            children = p1_p2_faces + p1_p3_faces + p2_p3_faces
+
+            for face in children:
+                if used_faces[face] != -1:
+                    children.remove(face)
+
+
+            for child in children:
+                coloring(faces, colors, child, used_faces)
+
+    else:
+        if min(colors) == -1:
+            coloring(faces, colors, 0, used_faces)
+
+    return colors
+\end{python}
+\end{landscape}
+\newpage
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{images/Figure_1.png}
+\caption{3-coloring of the dataset: simplePolygonTriangulated\_1.ply.}
+\label{fig:task_1_b}
+\end{figure}
+\vspace*{15mm}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{images/Figure_2.png}
+\caption{3-coloring of the dataset: simplePolygonTriangulated\_2.ply.}
+\label{fig:task_1_b}
+\end{figure}
+
+
+
 % ---- Bibliography ----
-%
-\bibliographystyle{plain}
-\bibliography{bib}
+% Vermutlich ohne Biber:
+% \bibliographystyle{plain}
+% \bibliography{bib}
+	
+% Mit Biber
+\printbibliography
 %
 \end{document}
 

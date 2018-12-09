@@ -1,0 +1,13 @@
+
+
+
+% Encoding: UTF-8
+
+@Book{berg2008computational,
+  title={Computational geometry: algorithms and applications},
+  author={Berg, Mark de and Cheong, Otfried and Kreveld, Marc van and Overmars, Mark},
+  year={2008},
+  publisher={Springer-Verlag TELOS}
+}
+
+@Comment{jabref-meta: databaseType:bibtex;}
