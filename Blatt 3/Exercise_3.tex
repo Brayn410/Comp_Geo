@@ -127,7 +127,7 @@ showstringspaces=false            %
 %\renewcommand{\thefootnote}{}
 
 
-% For Citations
+% For Citations, comment out if you do not use biber
 \usepackage[
 	backend=biber,
 	style=alphabetic,
@@ -324,6 +324,7 @@ def coloring(tri, colors, next_triangle, used_triangle):
             all_possible_colors.remove(colors[p1])
             all_possible_colors.remove(colors[p2])
             colors[p3] = all_possible_colors[0]
+            
         p1_p2_triangles = [i for i in range(len(tri)) if p1 in tri[i] and p2 in tri[i] and not p3 in tri[i]]
         p1_p3_triangles = [i for i in range(len(tri)) if p1 in tri[i] and p3 in tri[i] and not p2 in tri[i]]
         p2_p3_triangles = [i for i in range(len(tri)) if p2 in tri[i] and p3 in tri[i] and not p1 in tri[i]]
