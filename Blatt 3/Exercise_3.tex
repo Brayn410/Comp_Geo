@@ -280,6 +280,36 @@ In this case we have exactly 1 unbounded face. There are only doubly-connected e
 
 \section*{Exercise 2 (Planar Subdivision and Point Set) {\large \hfill (4 points)}}
 
+Let S.vertices be a list of vertices, which has the always the edge in counter-clockwise direction as incident face. The edges in counter-clockwise direction are the inner edges.\\
+
+V = sort(S.vertices)\\
+F = [ ]\\
+
+for p $\in$ P\\
+\hspace*{10mm}face = null\\
+\hspace*{10mm}vertices = V\\
+\hspace*{10mm}while size(vertices) > 0\\
+\hspace*{10mm}\hspace*{10mm}current\_face = null\\
+\hspace*{10mm}\hspace*{10mm}v = vertices.pop()\\
+\hspace*{10mm}\hspace*{10mm}i = v.incident\_edge\\
+\hspace*{10mm}\hspace*{10mm}n = i.next\_edge\\
+\hspace*{10mm}\hspace*{10mm}if is\_left(point, i)\\
+\hspace*{10mm}\hspace*{10mm}\hspace*{10mm}current\_face = i.incident\_face\\
+\hspace*{10mm}\hspace*{10mm}while i != n\\
+\hspace*{10mm}\hspace*{10mm}\hspace*{10mm}vertices.remove(n.origin)\\
+\hspace*{10mm}\hspace*{10mm}\hspace*{10mm}if current\_face != null\\
+\hspace*{10mm}\hspace*{10mm}\hspace*{10mm}\hspace*{10mm}if is\_right(point, n)\\
+\hspace*{10mm}\hspace*{10mm}\hspace*{10mm}\hspace*{10mm}\hspace*{10mm}current\_face = null\\
+\hspace*{10mm}\hspace*{10mm}\hspace*{10mm}n = n.next\_edge\\
+\hspace*{10mm}\hspace*{10mm}if current\_face != null\\
+\hspace*{10mm}\hspace*{10mm}\hspace*{10mm}face = current\_face\\
+\hspace*{10mm}F.append(face)\\
+
+F lists the face in which each point lies. If a face is null, that means the point lies outside of all polygons.\\
+The complexity of this algorithm is n*m, as for each of the m points, each of the n edges has to be checked.
+
+\newpage
+
 \section*{Exercise 3 (Planar Subdivision and Point Set) {\large \hfill (1 points)}}
 
 \section*{Exercise 4 (Planar Subdivision and Point Set) {\large \hfill (1 points)}}
