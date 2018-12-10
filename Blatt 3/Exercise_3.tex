@@ -90,14 +90,14 @@
 % Python style for highlighting
 \newcommand\pythonstyle{\lstset{
 language=Python,
-basicstyle=\fontsize{10}{10}\selectfont\ttfamily,  % oder \ttm, 
+basicstyle=\fontsize{10}{10}\selectfont\ttfamily,  % oder \ttm,
 otherkeywords={self},             % Add keywords here
 keywordstyle=\ttb\color{deepblue},
 emph={MyClass,__init__},          % Custom highlighting
 emphstyle=\ttb\color{deepred},    % Custom highlighting style
 stringstyle=\color{deepgreen},
 frame=tb,                         % Any extra options here
-showstringspaces=false            % 
+showstringspaces=false            %
 }}
 
 
@@ -129,9 +129,9 @@ showstringspaces=false            %
 
 % For Citations, comment out if you do not use biber
 \usepackage[
-	backend=biber,
-	style=alphabetic,
-	sorting=nty
+  backend=biber,
+  style=alphabetic,
+  sorting=nty
 ]{biblatex}
 \addbibresource{bib.bib}
 
@@ -217,7 +217,7 @@ Exercise 3 \\[-3pt]
 \vspace*{-10mm}
 
 \section*{Exercise 1 (Doubly-Connected Edge List) {\large \hfill (2 + 1 + 1 points)}}
-\textbf{a)} Which of the following equations are always true?. 
+\textbf{a)} Which of the following equations are always true?.
 \begin{align}
 \text{Twin}(\text{Twin}(\vec{e})) = \vec{e} \\
 \text{Next}(\text{Prev}(\vec{e})) = \vec{e} \\
@@ -267,7 +267,7 @@ This is a doubly-connected edge list where $f_1 = \text{IncidentFace}(\vec{e}_{1
 \textbf{c)} Given a doubly-connected edge list representation for a subdivision where
 \begin{align*}
 \text{Twin}(\vec{e}) = \text{Next}(\vec{e})
-\end{align*} 
+\end{align*}
 holds for every half-edge $\vec{e}$. How many faces can the subdivision have at most? \par
 \medskip
 In this case we have exactly 1 unbounded face. There are only doubly-connected edges like in figure \ref{fig:task_1_b} because this is the only case where $\text{Twin}(\vec{e}) = \text{Next}(\vec{e})$ holds. (Of course we might have many of these edges and some of them might be sharing some nodes). By definition each half-edge bounds only one face. We can easily apply the prove from \textbf{b)} here and use it to show that this is always the same face. This shows that there can only be exactly 1 unbounded face.
@@ -318,7 +318,7 @@ The complexity of this algorithm is n*m, as for each of the m points, each of th
 
 
 \begin{landscape}
-\section*{Exercise 5 (3-Coloring of Simple Polygons) {\large \hfill (5 points)}} 
+\section*{Exercise 5 (3-Coloring of Simple Polygons) {\large \hfill (5 points)}}
 For saving space, we only hand in our function for computing the 3-coloring, and skip all helper functions like reading the ply files or drawing the results. We encode all three colors by the numbers 0, 1 and 2. After that, we encode those numbers by real colors. But this is not part of this function. \par
 \bigskip
 
@@ -354,7 +354,7 @@ def coloring(tri, colors, next_triangle, used_triangle):
             all_possible_colors.remove(colors[p1])
             all_possible_colors.remove(colors[p2])
             colors[p3] = all_possible_colors[0]
-            
+
         p1_p2_triangles = [i for i in range(len(tri)) if p1 in tri[i] and p2 in tri[i] and not p3 in tri[i]]
         p1_p3_triangles = [i for i in range(len(tri)) if p1 in tri[i] and p3 in tri[i] and not p2 in tri[i]]
         p2_p3_triangles = [i for i in range(len(tri)) if p2 in tri[i] and p3 in tri[i] and not p1 in tri[i]]
@@ -381,7 +381,7 @@ def coloring(tri, colors, next_triangle, used_triangle):
 \centering
 \includegraphics[width=\textwidth]{images/Figure_1.png}
 \caption{3-coloring of the dataset: simplePolygonTriangulated\_1.ply.}
-\label{fig:task_1_b}
+%\label{fig:task_1_b}
 \end{figure}
 \vspace*{15mm}
 
@@ -389,7 +389,7 @@ def coloring(tri, colors, next_triangle, used_triangle):
 \centering
 \includegraphics[width=\textwidth]{images/Figure_2.png}
 \caption{3-coloring of the dataset: simplePolygonTriangulated\_2.ply.}
-\label{fig:task_1_b}
+%\label{fig:task_1_b}
 \end{figure}
 
 
@@ -398,7 +398,7 @@ def coloring(tri, colors, next_triangle, used_triangle):
 % Vermutlich ohne Biber:
 % \bibliographystyle{plain}
 % \bibliography{bib}
-	
+
 % Mit Biber
 \printbibliography
 %

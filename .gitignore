@@ -1,7 +1,12 @@
 *.aux
 *.log
 *.out
-*.synchtex.gz
+*.synctex.gz
 *.tex.bak
 *.thm
+*.bbl
+*.bcf
+*.blg
+*.run.xml
+*.bib.bak
 build/
