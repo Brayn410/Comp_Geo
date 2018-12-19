@@ -207,13 +207,161 @@ Exercise 4 \\[-3pt]
 \vspace*{-10mm}
 
 \section*{\large Exercise 1 (Image Compression using Quadtrees) {\normalsize \hfill (1 + 3 + 1 + 1 points)}}
-\textbf{a)} 
-\underline{Best Case:} We only have zero-entries. \\
-\underline{Worst Case:} Let $p_1, \cdots, p_k$ be the parents of the leaf nodes. The worst case scenario for data compressibility would be, if each $p_i$ stores only one non-zero-entry. \par
-\vspace*{3mm}
+\textbf{a)} \par
+\underline{Best Case:} The data are clustered in the same region/subtree.
+$\Rightarrow$ The tree is filled up subtree by subtree. \par
+Example for the worst case (image filled up with 25 \% of data points): \par
+\vspace*{-7mm}
+\begin{minipage}[t]{0.48\textwidth}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[>=latex, thick, inner sep=0pt, scale=0.75]
+	\node[](x1) at (0.6,3.4) {$x_1$};
+	\node[](x2) at (1.55,3.4) {$x_2$};
+	\node[](x3) at (0.6,2.4) {$x_3$};
+	\node[](x4) at (1.55,2.4) {$x_4$};
+
+	\draw[step=1cm,gray,very thin] (0,0) grid (4,4);		
+\end{tikzpicture}
+\label{Result after step 1}
+\end{figure} \par
+\end{minipage} \hspace*{5mm}
+\begin{minipage}[t]{0.45\textwidth}
+	\begin{figure}[H]
+		\centering
+		\begin{tikzpicture}[>=latex, thick, inner sep=0pt, scale=0.5]
+			\node[minimum size=12pt] (root) at (0,0) {$Root$};
+			
+			\node[minimum size=12pt] (null1) at (-6,-2) {$null$};
+			\node[minimum size=12pt] (nw) at (-2,-2) {$NW$};
+			\node[minimum size=12pt] (null2) at (2,-2) {$null$};
+			\node[minimum size=12pt] (null3) at (6,-2) {$null$};
+			
+			\node[minimum size=12pt] (ne_c) at (-5,-4) {$NE$};			
+			\node[minimum size=12pt] (nw_c) at (-3,-4) {$NW$};			
+			\node[minimum size=12pt] (sw_c) at (-1,-4) {$SW$};			
+			\node[minimum size=12pt] (se_c) at (1,-4) {$SE$};			
+			
+			\draw[-, line width=1pt](root) edge (null1);
+			\draw[-, line width=1pt](root) edge (nw);
+			\draw[-, line width=1pt](root) edge (null2);
+			\draw[-, line width=1pt](root) edge (null3);
+			
+			\draw[-, line width=1pt](nw) edge (ne_c);
+			\draw[-, line width=1pt](nw) edge (nw_c);
+			\draw[-, line width=1pt](nw) edge (sw_c);
+			\draw[-, line width=1pt](nw) edge (se_c);
+		\end{tikzpicture}
+	\label{Result after step 1 tree}
+	\end{figure} \par
+\end{minipage} \par
+\vspace*{10mm}
+\underline{Worst Case:} The data points are distributed all over the image and not clustered. $\Rightarrow\ $ The data are distributed evenly among the subtrees. \par
+Example for the worst case (image filled up with 25 \% of data points):
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[>=latex, thick, inner sep=0pt, scale=0.75]
+	\node[](x1) at (1.55,3.4) {$x_1$};
+	\node[](x2) at (2.6,3.4) {$x_2$};
+	\node[](x3) at (1.55,0.5) {$x_3$};
+	\node[](x4) at (2.6,0.5) {$x_4$};
+
+	\draw[step=1cm,gray,very thin] (0,0) grid (4,4);		
+\end{tikzpicture} \par
+\vspace*{5mm}
+\label{Result after step 1}
+\end{figure} \par
+	\begin{figure}[H]
+		\centering
+		\begin{tikzpicture}[>=latex, thick, inner sep=0pt, scale=0.49]
+			\node[minimum size=12pt] (root) at (0,0) {$Root$};
+			
+			\node[minimum size=12pt] (ne) at (-14,-2) {$NE$};
+			\node[minimum size=12pt] (nw) at (-4,-2) {$NW$};
+			\node[minimum size=12pt] (sw) at (4,-2) {$SW$};
+			\node[minimum size=12pt] (se) at (14,-2) {$SE$};
+			
+			\node[minimum size=12pt] (ne_c1) at (-17,-5) {$null$};			
+			\node[minimum size=12pt] (nw_c1) at (-15,-5) {$NW$};			
+			\node[minimum size=12pt] (sw_c1) at (-13,-5) {$null$};			
+			\node[minimum size=12pt] (se_c1) at (-11,-5) {$null$};			
+			
+			\node[minimum size=12pt] (ne_c2) at (-8,-5) {$NE$};			
+			\node[minimum size=12pt] (nw_c2) at (-6,-5) {$null$};			
+			\node[minimum size=12pt] (sw_c2) at (-4,-5) {$null$};			
+			\node[minimum size=12pt] (se_c2) at (-2,-5) {$null$};
+			
+			\node[minimum size=12pt] (ne_c3) at (2,-5) {$null$};			
+			\node[minimum size=12pt] (nw_c3) at (4,-5) {$null$};			
+			\node[minimum size=12pt] (sw_c3) at (6,-5) {$null$};			
+			\node[minimum size=12pt] (se_c3) at (8,-5) {$SE$};
+			
+			\node[minimum size=12pt] (ne_c4) at (11,-5) {$null$};			
+			\node[minimum size=12pt] (nw_c4) at (13,-5) {$null$};			
+			\node[minimum size=12pt] (sw_c4) at (15,-5) {$SW$};			
+			\node[minimum size=12pt] (se_c4) at (17,-5) {$null$};
+			
+			\draw[-, line width=1pt](root) edge (ne);
+			\draw[-, line width=1pt](root) edge (nw);
+			\draw[-, line width=1pt](root) edge (sw);
+			\draw[-, line width=1pt](root) edge (se);
+			
+			\draw[-, line width=1pt](ne) edge (ne_c1);
+			\draw[-, line width=1pt](ne) edge (nw_c1);
+			\draw[-, line width=1pt](ne) edge (sw_c1);
+			\draw[-, line width=1pt](ne) edge (se_c1);
+			
+			\draw[-, line width=1pt](nw) edge (ne_c2);
+			\draw[-, line width=1pt](nw) edge (nw_c2);
+			\draw[-, line width=1pt](nw) edge (sw_c2);
+			\draw[-, line width=1pt](nw) edge (se_c2);
+			
+			\draw[-, line width=1pt](sw) edge (ne_c3);
+			\draw[-, line width=1pt](sw) edge (nw_c3);
+			\draw[-, line width=1pt](sw) edge (sw_c3);
+			\draw[-, line width=1pt](sw) edge (se_c3);
+			
+			\draw[-, line width=1pt](se) edge (ne_c4);
+			\draw[-, line width=1pt](se) edge (nw_c4);
+			\draw[-, line width=1pt](se) edge (sw_c4);
+			\draw[-, line width=1pt](se) edge (se_c4);
+		\end{tikzpicture}
+	\label{Result after step 1 tree}
+\end{figure} \par
+\newpage
 
 
-\textbf{b)} 
+\textbf{b)} \par
+We assume in Worst Case that our squared input image is filled up with at least 25 \% of data points. So our tree is a complete $4-$regular tree. Since, $e$ is the edge length of the squared image, the depth of our Quad-Tree in the Worst Case is given by $log_4(e^2) = 2 \cdot log_4(e)$. Now, we can compute the number of inner vertices as: \par
+\vspace*{-3mm}
+\begin{equation}
+\begin{aligned}
+\sum\limits_{\ell = 0}^{log_4(e^2) - 1} 4^\ell
+\end{aligned}
+\end{equation}
+Further, we know the number of leafs is: \par
+\vspace*{-3mm}
+\begin{equation}
+\begin{aligned}
+4^{log_4(e^2)}
+\end{aligned}
+\end{equation} \par
+Since, each inner vertex has 5 Pointer (four to his children and one to its parent vertex) except the root node (the root node does not have a parent, therefore at the end $-8 \text{ Byte}$) and each pointer needs 8 Byte, so we need: \par
+\vspace*{-3mm}
+\begin{equation}
+\begin{aligned}
+\left( \sum\limits_{\ell = 0}^{log_4(e^2) - 1} 4^\ell \right) \cdot 5 \cdot 8 \text{ Byte} - 8 \text{ Byte}= \frac{1}{3}\left( e^2 - 1 \right) \cdot 5 \cdot 8 \text{ Byte} - 8 \text{ Byte}
+\end{aligned}
+\end{equation} \par
+For the leaf nodes we need: \par
+\vspace*{-3mm}
+\begin{equation}
+\begin{aligned}
+x \cdot 4^{log_4(e^2)} \cdot 8 \text{ Byte} = x \cdot e^2 \cdot 8 \text{ Byte}
+\end{aligned}
+\end{equation} \par
+storage, where $x$ is as given the ration of non-zero data. The leads to the following algorithm: \par
+
 \begin{algorithm}
 \caption{Calculate $\frac{s_{new}}{s_{old}}$ ratio}
 \label{Alg f} \par
@@ -228,23 +376,74 @@ Exercise 4 \\[-3pt]
 \begin{algorithmic}[1]
 	\State $s_{old} \coloneqq e^2 \cdot 8$Byte
 	\State \texttt{size\_not\_null\_data} $\coloneqq x \cdot s_{old}$
-	\State \texttt{num\_not\_null\_data} $\coloneqq x \cdot e^2$
-	\State \texttt{tree\_size} $\coloneqq$ {\color{red} ggf verbessern}
+	\State \texttt{tree\_size} $\coloneqq \left(\frac{1}{3}\left( e^2 - 1 \right) \cdot 5 + x \cdot e^2 \right) \cdot 8 \text{ Byte} - 8 \text{ Byte}$
 	\State $s_{new} \coloneqq \texttt{size\_not\_null\_data} + \texttt{tree\_size}$ 
    	\State \Return $\frac{s_{new}}{s_{old}}$
 \end{algorithmic}
 \end{algorithm}\par
-
+\vspace*{15mm}
 
 
 \textbf{c)}
+First we explain the idea of the function $g$, which computes the storage for the best case. As above, each inner vertex has 5 Pointer (except the root node) and each pointer needs $8 \text{ Byte}$. Similar to the Worst Case, the tree has a maximal depth of $log_4(e^2)$. So, the last inner vertex is on level $log_4(e^2) - 1$. The number of used non-zero data is again $x \cdot e^2$. Hence, we get the following best case function: \par
+\newpage
+\begin{algorithm}
+\caption{Calculate $\frac{s_{new}}{s_{old}}$ ratio}
+\label{Alg f} \par
+\medskip
+{g($e, x$)} \par
+\vspace*{-3mm}
+\begin{itemize}[leftmargin=20mm]
+\item[\textbf{Input:}] edge length $e$ and fraction of non-zero data $x$. \\[-20pt]
+\item[\textbf{Ouput:}] ratio $\frac{s_{new}}{s_{old}}$.
+\end{itemize} \par
+\vspace*{-3mm}
+\begin{algorithmic}[1]
+	\State $s_{old} \coloneqq e^2 \cdot 8$Byte
+	\State \texttt{size\_not\_null\_data} $\coloneqq x \cdot s_{old}$
+	\State \texttt{tree\_size} $\coloneqq \left( (log_4(e^2) - 1) \cdot 5 + x \cdot e^2 \right) \cdot 8 \text{ Byte} - 8 \text{ Byte}$
+	\State $s_{new} \coloneqq \texttt{size\_not\_null\_data} + \texttt{tree\_size}$ 
+   	\State \Return $\frac{s_{new}}{s_{old}}$
+\end{algorithmic}
+\end{algorithm}\par
+\vspace*{5mm}
+
+\underline{Worst Case calculation:} \par
+\vspace*{-3mm}
+\begin{algorithm}
+{f($e=4, x=0.25$)} \par
+\begin{algorithmic}[1]
+	\State $s_{old} \coloneqq 4^2 \cdot 8$Byte = $128$ Byte
+	\State \texttt{size\_not\_null\_data} $\coloneqq 0.25 \cdot s_{old} = 32$ Byte
+	\State \texttt{tree\_size} $\coloneqq \left(\frac{1}{3}\left( 4^2 - 1 \right) \cdot 5 + x \cdot e^2 \right) \cdot 8 \text{ Byte} - 8 \text{ Byte} = (25 + 4) \cdot 8 \text{ Byte} - 8 \text{ Byte} = 224$ Byte
+	\State $s_{new} 32 + 224 = 256$ 
+   	\State \Return $\frac{s_{new}}{s_{old}} = \frac{256}{128} = 2$
+\end{algorithmic}
+\end{algorithm}\par
 \vspace*{3mm}
 
-\textbf{d)}
-We assume, each string needs 8 Byte. Instead of using the strings "NE", "SE", "SW" and "NW", we can use integer values. Since, we only need four values, the standard int32 which can store $2^{32}-1$ values is enough. If we assume a boolean value need exact one Bit, then we can do better. We could use four boolean values which decode the values $1,2,3$ and $4$ as binary value. \par
-Further, for the non-zero-entries, we could try to find duplicates and store them only once.
+\underline{Best Case calculation:} \par
+\vspace*{-3mm}
+\begin{algorithm}
+{g($e, x$)} \par
+\begin{algorithmic}[1]
+	\State $s_{old} \coloneqq 4^2 \cdot 8$Byte = $128$ Byte
+	\State \texttt{size\_not\_null\_data} $\coloneqq 0.25 \cdot s_{old} = 32$ Byte
+	\State \texttt{tree\_size} $\coloneqq \left( (log_4(4^2) - 1) \cdot 5 + 0.25 \cdot 4^2 \right) \cdot 8 \text{ Byte} - 8 \text{ Byte} = 64 \text{ Byte}$
+	\State $s_{new} 32 + 64= 96$ 
+   	\State \Return $\frac{s_{new}}{s_{old}} = \frac{96}{128} = 0.75$
+\end{algorithmic}
+\end{algorithm}\par
+\vspace*{15mm}
 
-\vspace*{10mm}
+
+\textbf{d)}
+We have four approaches how we could save even more memory:
+
+1) We assume, each string needs 8 Byte. Instead of using the strings "NE", "SE", "SW" and "NW", we can use integer values. Since, we only need four values, the standard int32 which can store $2^{32}-1$ values is enough. If we assume a boolean value need exact one Bit, then we can do better. We could use two boolean values (2 Bit) which decode the values $1,2,3$ and $4$ as binary value. \par
+2) We can eliminate the pointers which point to the data points by saving the data points directly in the tree. \par
+3) We skip the rule that every node has to have exactly four child nodes to reduce the memory for storing null-pointers. We can achieve this by saving the leafs of a parent node $p_i$ in a list. This list only contains real data points and no null values. \par
+4) Further, for the non-zero-entries, we could try to find duplicates and store them only once. \par
 \newpage
 
 
@@ -769,6 +968,8 @@ Now, we are splitting in $x-$direction. Since each remaining list only contains 
 \vspace*{15mm}
 
 
+
+
 \newpage
 
 \section*{\large Exercise 3 (Range Search in a kD-tree) {\normalsize \hfill (5 points)}}
@@ -777,6 +978,4 @@ Now, we are splitting in $x-$direction. Since each remaining list only contains 
 \section*{\large Exercise 4 (Nearest Neighbor Search in a kD Tree) {\normalsize \hfill (4 points)}}
 
 \end{document}
-
-
 
