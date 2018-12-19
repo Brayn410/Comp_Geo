@@ -346,21 +346,21 @@ Further, we know the number of leafs is: \par
 4^{log_4(e^2)}
 \end{aligned}
 \end{equation} \par
-Since, each inner vertex has 5 Pointer (four to his children and one to its parent vertex) except the root node (the root node does not have a parent, therefore at the end $-8 \text{ Byte}$) and each pointer needs 8 Byte, so we need: \par
+Since, each inner vertex has 5 Pointer (four to its children and one to its parent vertex) except the root node (the root node does not have a parent, therefore we subtract at the end $8 \text{ Byte}$) and each pointer needs 8 Byte, so we need: \par
 \vspace*{-3mm}
 \begin{equation}
 \begin{aligned}
 \left( \sum\limits_{\ell = 0}^{log_4(e^2) - 1} 4^\ell \right) \cdot 5 \cdot 8 \text{ Byte} - 8 \text{ Byte}= \frac{1}{3}\left( e^2 - 1 \right) \cdot 5 \cdot 8 \text{ Byte} - 8 \text{ Byte}
 \end{aligned}
 \end{equation} \par
-For the leaf nodes we need: \par
+for the inner vertices. The memory for the leaf nodes is given by: \par
 \vspace*{-3mm}
 \begin{equation}
 \begin{aligned}
 x \cdot 4^{log_4(e^2)} \cdot 8 \text{ Byte} = x \cdot e^2 \cdot 8 \text{ Byte}
 \end{aligned}
 \end{equation} \par
-storage, where $x$ is as given the ration of non-zero data. The leads to the following algorithm: \par
+where $x$ is the ratio of non-zero data. This leads to the following algorithm: \par
 
 \begin{algorithm}
 \caption{Calculate $\frac{s_{new}}{s_{old}}$ ratio}
@@ -415,8 +415,8 @@ First we explain the idea of the function $g$, which computes the storage for th
 \begin{algorithmic}[1]
 	\State $s_{old} \coloneqq 4^2 \cdot 8$Byte = $128$ Byte
 	\State \texttt{size\_not\_null\_data} $\coloneqq 0.25 \cdot s_{old} = 32$ Byte
-	\State \texttt{tree\_size} $\coloneqq \left(\frac{1}{3}\left( 4^2 - 1 \right) \cdot 5 + x \cdot e^2 \right) \cdot 8 \text{ Byte} - 8 \text{ Byte} = (25 + 4) \cdot 8 \text{ Byte} - 8 \text{ Byte} = 224$ Byte
-	\State $s_{new} 32 + 224 = 256$ 
+	\State \texttt{tree\_size} $\coloneqq \left(\frac{1}{3}\left( 4^2 - 1 \right) \cdot 5 + 0.25 \cdot 4^2 \right) \cdot 8 \text{ Byte} - 8 \text{ Byte} = 224$ Byte
+	\State $s_{new} \coloneqq 32 + 224 = 256$ 
    	\State \Return $\frac{s_{new}}{s_{old}} = \frac{256}{128} = 2$
 \end{algorithmic}
 \end{algorithm}\par
@@ -430,7 +430,7 @@ First we explain the idea of the function $g$, which computes the storage for th
 	\State $s_{old} \coloneqq 4^2 \cdot 8$Byte = $128$ Byte
 	\State \texttt{size\_not\_null\_data} $\coloneqq 0.25 \cdot s_{old} = 32$ Byte
 	\State \texttt{tree\_size} $\coloneqq \left( (log_4(4^2) - 1) \cdot 5 + 0.25 \cdot 4^2 \right) \cdot 8 \text{ Byte} - 8 \text{ Byte} = 64 \text{ Byte}$
-	\State $s_{new} 32 + 64= 96$ 
+	\State $s_{new} \coloneqq 32 + 64= 96$ 
    	\State \Return $\frac{s_{new}}{s_{old}} = \frac{96}{128} = 0.75$
 \end{algorithmic}
 \end{algorithm}\par
