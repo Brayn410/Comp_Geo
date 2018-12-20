@@ -974,6 +974,7 @@ Now, we are splitting in $x-$direction. Since each remaining list only contains 
 
 \section*{\large Exercise 3 (Range Search in a kD-tree) {\normalsize \hfill (5 points)}}
 
+\#classes for the KDTree structure
 class kdNode(object):\\
 \hspace*{10mm}def \_\_init\_\_(self):\\
 \hspace*{10mm}\hspace*{10mm}self.value = None\\
@@ -984,15 +985,44 @@ class kdLeaf(object):\\
 \hspace*{10mm}def \_\_init\_\_(self):\\
 \hspace*{10mm}\hspace*{10mm}self.value = None\\
 
+k = 2 \#given by task\\
+\#function for building a KDTree\\
+def kdTree(points, level=0):\\
+\hspace*{10mm}dim = level \% k \#determines if points should be split by x or y axis\\
+\hspace*{10mm}axis = points[0].dtype.names[dim]\\
+\hspace*{10mm}median = (np.sort(points, order=axis)[len(points)-1][axis] +\\
+\hspace*{10mm}\hspace*{10mm}\hspace*{10mm}np.sort(points, order=axis)[0][axis]) / 2\\
+\hspace*{10mm}node = kdNode()\\
+\hspace*{10mm}node.value = median\\
+\hspace*{10mm}split\_list = splitList(points, median, axis) \#function that splits list into left and right\\
+\hspace*{10mm}left\_points = split\_list[0]\\
+\hspace*{10mm}if len(left\_points) == 1:\\
+\hspace*{10mm}\hspace*{10mm}node.left = kdLeaf()\\
+\hspace*{10mm}\hspace*{10mm}node.left.value = left\_points[0]\\
+\hspace*{10mm}else:\\
+\hspace*{10mm}\hspace*{10mm}node.left = kdTree(left\_points, level+1)\\
+\hspace*{10mm}right\_points = split\_list[1]\\
+\hspace*{10mm}if len(right\_points) == 1:\\
+\hspace*{10mm}\hspace*{10mm}node.right = kdLeaf()\\
+\hspace*{10mm}\hspace*{10mm}node.right.value = right\_points[0]\\
+\hspace*{10mm}else:\\
+\hspace*{10mm}\hspace*{10mm}node.right = kdTree(right\_points, level+1)\\
+\hspace*{10mm}return node\\
+
+\newpage
+
 looked\_at = [] \#for the visualization of looked at points\\
+\#function for performing rangeSearch on a KDTree\\
 def rangeSearch(node, rec, level=0):\\
 \hspace*{10mm}result = []\\
-\hspace*{10mm}dim = level \% k \#determines if points should be split by x or y axis\\
+\hspace*{10mm}\#determine if list should be split by x or y axis\\
+\hspace*{10mm}dim = level \% k\\
     
 \hspace*{10mm}if type(node) is kdLeaf:\\
 \hspace*{10mm}\hspace*{10mm}looked\_at.append(node.value)\\
-\hspace*{10mm}\hspace*{10mm}if rec[0][0] <= node.value['x'] and rec[0][1] >= node.value['x']: \#within x range\\
-\hspace*{10mm}\hspace*{10mm\hspace*{10mm}}if rec[1][0] <= node.value['y'] and rec[1][1] >= node.value['y']: \#within y range\\
+\hspace*{10mm}\hspace*{10mm}\#check if point is within rectangle range\\
+\hspace*{10mm}\hspace*{10mm}if rec[0][0] <= node.value['x'] and rec[0][1] >= node.value['x']:\\
+\hspace*{10mm}\hspace*{10mm\hspace*{10mm}}if rec[1][0] <= node.value['y'] and rec[1][1] >= node.value['y']:\\
 \hspace*{10mm}\hspace*{10mm}\hspace*{10mm}\hspace*{10mm}result.append(node.value)\\
 \hspace*{10mm}else:\\
 \hspace*{10mm}\hspace*{10mm}if node.value > rec[dim][1]:\\
@@ -1014,6 +1044,8 @@ def rangeSearch(node, rec, level=0):\\
 \hspace*{10mm}\hspace*{10mm}\hspace*{10mm}for e in right:\\
 \hspace*{10mm}\hspace*{10mm}\hspace*{10mm}\hspace*{10mm}result.append(e)\\
 \hspace*{10mm}return result\\
+
+\newpage
 
 Example Output for the full program using the 'points\_4.ply' dataset:\\
 \includegraphics{./images/task3.png}\\
