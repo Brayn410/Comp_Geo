@@ -216,44 +216,42 @@ Example for the worst case (image filled up with 25 \% of data points): \par
 \begin{figure}[H]
 \centering
 \begin{tikzpicture}[>=latex, thick, inner sep=0pt, scale=0.75]
-	\node[](x1) at (0.6,3.4) {$x_1$};
-	\node[](x2) at (1.55,3.4) {$x_2$};
-	\node[](x3) at (0.6,2.4) {$x_3$};
-	\node[](x4) at (1.55,2.4) {$x_4$};
+  \node[](x1) at (0.6,3.4) {$x_1$};
+  \node[](x2) at (1.55,3.4) {$x_2$};
+  \node[](x3) at (0.6,2.4) {$x_3$};
+  \node[](x4) at (1.55,2.4) {$x_4$};
 
-	\draw[step=1cm,gray,very thin] (0,0) grid (4,4);		
+  \draw[step=1cm,gray,very thin] (0,0) grid (4,4);
 \end{tikzpicture}
-\label{Result after step 1}
 \end{figure} \par
 \end{minipage} \hspace*{5mm}
 \begin{minipage}[t]{0.45\textwidth}
-	\begin{figure}[H]
-		\centering
-		\begin{tikzpicture}[>=latex, thick, inner sep=0pt, scale=0.5]
-			\node[minimum size=12pt] (root) at (0,0) {$Root$};
-			
-			\node[minimum size=12pt] (null1) at (-6,-2) {$null$};
-			\node[minimum size=12pt] (nw) at (-2,-2) {$NW$};
-			\node[minimum size=12pt] (null2) at (2,-2) {$null$};
-			\node[minimum size=12pt] (null3) at (6,-2) {$null$};
-			
-			\node[minimum size=12pt] (ne_c) at (-5,-4) {$NE$};			
-			\node[minimum size=12pt] (nw_c) at (-3,-4) {$NW$};			
-			\node[minimum size=12pt] (sw_c) at (-1,-4) {$SW$};			
-			\node[minimum size=12pt] (se_c) at (1,-4) {$SE$};			
-			
-			\draw[-, line width=1pt](root) edge (null1);
-			\draw[-, line width=1pt](root) edge (nw);
-			\draw[-, line width=1pt](root) edge (null2);
-			\draw[-, line width=1pt](root) edge (null3);
-			
-			\draw[-, line width=1pt](nw) edge (ne_c);
-			\draw[-, line width=1pt](nw) edge (nw_c);
-			\draw[-, line width=1pt](nw) edge (sw_c);
-			\draw[-, line width=1pt](nw) edge (se_c);
-		\end{tikzpicture}
-	\label{Result after step 1 tree}
-	\end{figure} \par
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[>=latex, thick, inner sep=0pt, scale=0.5]
+      \node[minimum size=12pt] (root) at (0,0) {$Root$};
+
+      \node[minimum size=12pt] (null1) at (-6,-2) {$null$};
+      \node[minimum size=12pt] (nw) at (-2,-2) {$NW$};
+      \node[minimum size=12pt] (null2) at (2,-2) {$null$};
+      \node[minimum size=12pt] (null3) at (6,-2) {$null$};
+
+      \node[minimum size=12pt] (ne_c) at (-5,-4) {$NE$};
+      \node[minimum size=12pt] (nw_c) at (-3,-4) {$NW$};
+      \node[minimum size=12pt] (sw_c) at (-1,-4) {$SW$};
+      \node[minimum size=12pt] (se_c) at (1,-4) {$SE$};
+
+      \draw[-, line width=1pt](root) edge (null1);
+      \draw[-, line width=1pt](root) edge (nw);
+      \draw[-, line width=1pt](root) edge (null2);
+      \draw[-, line width=1pt](root) edge (null3);
+
+      \draw[-, line width=1pt](nw) edge (ne_c);
+      \draw[-, line width=1pt](nw) edge (nw_c);
+      \draw[-, line width=1pt](nw) edge (sw_c);
+      \draw[-, line width=1pt](nw) edge (se_c);
+    \end{tikzpicture}
+  \end{figure} \par
 \end{minipage} \par
 \vspace*{10mm}
 \underline{Worst Case:} The data points are distributed all over the image and not clustered. $\Rightarrow\ $ The data are distributed evenly among the subtrees. \par
@@ -261,72 +259,70 @@ Example for the worst case (image filled up with 25 \% of data points):
 \begin{figure}[H]
 \centering
 \begin{tikzpicture}[>=latex, thick, inner sep=0pt, scale=0.75]
-	\node[](x1) at (1.55,3.4) {$x_1$};
-	\node[](x2) at (2.6,3.4) {$x_2$};
-	\node[](x3) at (1.55,0.5) {$x_3$};
-	\node[](x4) at (2.6,0.5) {$x_4$};
+  \node[](x1) at (1.55,3.4) {$x_1$};
+  \node[](x2) at (2.6,3.4) {$x_2$};
+  \node[](x3) at (1.55,0.5) {$x_3$};
+  \node[](x4) at (2.6,0.5) {$x_4$};
 
-	\draw[step=1cm,gray,very thin] (0,0) grid (4,4);		
+  \draw[step=1cm,gray,very thin] (0,0) grid (4,4);
 \end{tikzpicture} \par
 \vspace*{5mm}
-\label{Result after step 1}
 \end{figure} \par
-	\begin{figure}[H]
-		\centering
-		\begin{tikzpicture}[>=latex, thick, inner sep=0pt, scale=0.49]
-			\node[minimum size=12pt] (root) at (0,0) {$Root$};
-			
-			\node[minimum size=12pt] (ne) at (-14,-2) {$NE$};
-			\node[minimum size=12pt] (nw) at (-4,-2) {$NW$};
-			\node[minimum size=12pt] (sw) at (4,-2) {$SW$};
-			\node[minimum size=12pt] (se) at (14,-2) {$SE$};
-			
-			\node[minimum size=12pt] (ne_c1) at (-17,-5) {$null$};			
-			\node[minimum size=12pt] (nw_c1) at (-15,-5) {$NW$};			
-			\node[minimum size=12pt] (sw_c1) at (-13,-5) {$null$};			
-			\node[minimum size=12pt] (se_c1) at (-11,-5) {$null$};			
-			
-			\node[minimum size=12pt] (ne_c2) at (-8,-5) {$NE$};			
-			\node[minimum size=12pt] (nw_c2) at (-6,-5) {$null$};			
-			\node[minimum size=12pt] (sw_c2) at (-4,-5) {$null$};			
-			\node[minimum size=12pt] (se_c2) at (-2,-5) {$null$};
-			
-			\node[minimum size=12pt] (ne_c3) at (2,-5) {$null$};			
-			\node[minimum size=12pt] (nw_c3) at (4,-5) {$null$};			
-			\node[minimum size=12pt] (sw_c3) at (6,-5) {$null$};			
-			\node[minimum size=12pt] (se_c3) at (8,-5) {$SE$};
-			
-			\node[minimum size=12pt] (ne_c4) at (11,-5) {$null$};			
-			\node[minimum size=12pt] (nw_c4) at (13,-5) {$null$};			
-			\node[minimum size=12pt] (sw_c4) at (15,-5) {$SW$};			
-			\node[minimum size=12pt] (se_c4) at (17,-5) {$null$};
-			
-			\draw[-, line width=1pt](root) edge (ne);
-			\draw[-, line width=1pt](root) edge (nw);
-			\draw[-, line width=1pt](root) edge (sw);
-			\draw[-, line width=1pt](root) edge (se);
-			
-			\draw[-, line width=1pt](ne) edge (ne_c1);
-			\draw[-, line width=1pt](ne) edge (nw_c1);
-			\draw[-, line width=1pt](ne) edge (sw_c1);
-			\draw[-, line width=1pt](ne) edge (se_c1);
-			
-			\draw[-, line width=1pt](nw) edge (ne_c2);
-			\draw[-, line width=1pt](nw) edge (nw_c2);
-			\draw[-, line width=1pt](nw) edge (sw_c2);
-			\draw[-, line width=1pt](nw) edge (se_c2);
-			
-			\draw[-, line width=1pt](sw) edge (ne_c3);
-			\draw[-, line width=1pt](sw) edge (nw_c3);
-			\draw[-, line width=1pt](sw) edge (sw_c3);
-			\draw[-, line width=1pt](sw) edge (se_c3);
-			
-			\draw[-, line width=1pt](se) edge (ne_c4);
-			\draw[-, line width=1pt](se) edge (nw_c4);
-			\draw[-, line width=1pt](se) edge (sw_c4);
-			\draw[-, line width=1pt](se) edge (se_c4);
-		\end{tikzpicture}
-	\label{Result after step 1 tree}
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[>=latex, thick, inner sep=0pt, scale=0.49]
+      \node[minimum size=12pt] (root) at (0,0) {$Root$};
+
+      \node[minimum size=12pt] (ne) at (-14,-2) {$NE$};
+      \node[minimum size=12pt] (nw) at (-4,-2) {$NW$};
+      \node[minimum size=12pt] (sw) at (4,-2) {$SW$};
+      \node[minimum size=12pt] (se) at (14,-2) {$SE$};
+
+      \node[minimum size=12pt] (ne_c1) at (-17,-5) {$null$};
+      \node[minimum size=12pt] (nw_c1) at (-15,-5) {$NW$};
+      \node[minimum size=12pt] (sw_c1) at (-13,-5) {$null$};
+      \node[minimum size=12pt] (se_c1) at (-11,-5) {$null$};
+
+      \node[minimum size=12pt] (ne_c2) at (-8,-5) {$NE$};
+      \node[minimum size=12pt] (nw_c2) at (-6,-5) {$null$};
+      \node[minimum size=12pt] (sw_c2) at (-4,-5) {$null$};
+      \node[minimum size=12pt] (se_c2) at (-2,-5) {$null$};
+
+      \node[minimum size=12pt] (ne_c3) at (2,-5) {$null$};
+      \node[minimum size=12pt] (nw_c3) at (4,-5) {$null$};
+      \node[minimum size=12pt] (sw_c3) at (6,-5) {$null$};
+      \node[minimum size=12pt] (se_c3) at (8,-5) {$SE$};
+
+      \node[minimum size=12pt] (ne_c4) at (11,-5) {$null$};
+      \node[minimum size=12pt] (nw_c4) at (13,-5) {$null$};
+      \node[minimum size=12pt] (sw_c4) at (15,-5) {$SW$};
+      \node[minimum size=12pt] (se_c4) at (17,-5) {$null$};
+
+      \draw[-, line width=1pt](root) edge (ne);
+      \draw[-, line width=1pt](root) edge (nw);
+      \draw[-, line width=1pt](root) edge (sw);
+      \draw[-, line width=1pt](root) edge (se);
+
+      \draw[-, line width=1pt](ne) edge (ne_c1);
+      \draw[-, line width=1pt](ne) edge (nw_c1);
+      \draw[-, line width=1pt](ne) edge (sw_c1);
+      \draw[-, line width=1pt](ne) edge (se_c1);
+
+      \draw[-, line width=1pt](nw) edge (ne_c2);
+      \draw[-, line width=1pt](nw) edge (nw_c2);
+      \draw[-, line width=1pt](nw) edge (sw_c2);
+      \draw[-, line width=1pt](nw) edge (se_c2);
+
+      \draw[-, line width=1pt](sw) edge (ne_c3);
+      \draw[-, line width=1pt](sw) edge (nw_c3);
+      \draw[-, line width=1pt](sw) edge (sw_c3);
+      \draw[-, line width=1pt](sw) edge (se_c3);
+
+      \draw[-, line width=1pt](se) edge (ne_c4);
+      \draw[-, line width=1pt](se) edge (nw_c4);
+      \draw[-, line width=1pt](se) edge (sw_c4);
+      \draw[-, line width=1pt](se) edge (se_c4);
+    \end{tikzpicture}
 \end{figure} \par
 \newpage
 
@@ -363,22 +359,19 @@ x \cdot 4^{log_4(e^2)} \cdot 8 \text{ Byte} = x \cdot e^2 \cdot 8 \text{ Byte}
 where $x$ is the ratio of non-zero data. This leads to the following algorithm: \par
 
 \begin{algorithm}
+\algrenewcommand\algorithmicrequire{\textbf{Input:}}
+\algrenewcommand\algorithmicensure{\textbf{Output:}}
 \caption{Calculate $\frac{s_{new}}{s_{old}}$ ratio}
-\label{Alg f} \par
 \medskip
-{f($e, x$)} \par
-\vspace*{-3mm}
-\begin{itemize}[leftmargin=20mm]
-\item[\textbf{Input:}] edge length $e$ and fraction of non-zero data $x$. \\[-20pt]
-\item[\textbf{Ouput:}] ratio $\frac{s_{new}}{s_{old}}$.
-\end{itemize} \par
-\vspace*{-3mm}
+{f($e, x$)}
 \begin{algorithmic}[1]
-	\State $s_{old} \coloneqq e^2 \cdot 8$Byte
-	\State \texttt{size\_not\_null\_data} $\coloneqq x \cdot s_{old}$
-	\State \texttt{tree\_size} $\coloneqq \left(\frac{1}{3}\left( e^2 - 1 \right) \cdot 5 + x \cdot e^2 \right) \cdot 8 \text{ Byte} - 8 \text{ Byte}$
-	\State $s_{new} \coloneqq \texttt{size\_not\_null\_data} + \texttt{tree\_size}$ 
-   	\State \Return $\frac{s_{new}}{s_{old}}$
+  \Require edge length $e$ and fraction of non-zero data $x$.
+  \Ensure ratio $\frac{s_{new}}{s_{old}}$.
+  \State $s_{old} \coloneqq e^2 \cdot 8$Byte
+  \State \texttt{size\_not\_null\_data} $\coloneqq x \cdot s_{old}$
+  \State \texttt{tree\_size} $\coloneqq \left(\frac{1}{3}\left( e^2 - 1 \right) \cdot 5 + x \cdot e^2 \right) \cdot 8 \text{ Byte} - 8 \text{ Byte}$
+  \State $s_{new} \coloneqq \texttt{size\_not\_null\_data} + \texttt{tree\_size}$
+  \State \Return $\frac{s_{new}}{s_{old}}$
 \end{algorithmic}
 \end{algorithm}\par
 \vspace*{15mm}
@@ -389,21 +382,15 @@ First we explain the idea of the function $g$, which computes the storage for th
 \newpage
 \begin{algorithm}
 \caption{Calculate $\frac{s_{new}}{s_{old}}$ ratio}
-\label{Alg f} \par
 \medskip
-{g($e, x$)} \par
-\vspace*{-3mm}
-\begin{itemize}[leftmargin=20mm]
-\item[\textbf{Input:}] edge length $e$ and fraction of non-zero data $x$. \\[-20pt]
-\item[\textbf{Ouput:}] ratio $\frac{s_{new}}{s_{old}}$.
-\end{itemize} \par
-\vspace*{-3mm}
 \begin{algorithmic}[1]
-	\State $s_{old} \coloneqq e^2 \cdot 8$Byte
-	\State \texttt{size\_not\_null\_data} $\coloneqq x \cdot s_{old}$
-	\State \texttt{tree\_size} $\coloneqq \left( (log_4(e^2) - 1) \cdot 5 + x \cdot e^2 \right) \cdot 8 \text{ Byte} - 8 \text{ Byte}$
-	\State $s_{new} \coloneqq \texttt{size\_not\_null\_data} + \texttt{tree\_size}$ 
-   	\State \Return $\frac{s_{new}}{s_{old}}$
+  \Require edge length $e$ and fraction of non-zero data $x$.
+  \Ensure ratio $\frac{s_{new}}{s_{old}}$.
+  \State $s_{old} \coloneqq e^2 \cdot 8$Byte
+  \State \texttt{size\_not\_null\_data} $\coloneqq x \cdot s_{old}$
+  \State \texttt{tree\_size} $\coloneqq \left( (log_4(e^2) - 1) \cdot 5 + x \cdot e^2 \right) \cdot 8 \text{ Byte} - 8 \text{ Byte}$
+  \State $s_{new} \coloneqq \texttt{size\_not\_null\_data} + \texttt{tree\_size}$
+    \State \Return $\frac{s_{new}}{s_{old}}$
 \end{algorithmic}
 \end{algorithm}\par
 \vspace*{5mm}
@@ -413,11 +400,11 @@ First we explain the idea of the function $g$, which computes the storage for th
 \begin{algorithm}
 {f($e=4, x=0.25$)} \par
 \begin{algorithmic}[1]
-	\State $s_{old} \coloneqq 4^2 \cdot 8$Byte = $128$ Byte
-	\State \texttt{size\_not\_null\_data} $\coloneqq 0.25 \cdot s_{old} = 32$ Byte
-	\State \texttt{tree\_size} $\coloneqq \left(\frac{1}{3}\left( 4^2 - 1 \right) \cdot 5 + 0.25 \cdot 4^2 \right) \cdot 8 \text{ Byte} - 8 \text{ Byte} = 224$ Byte
-	\State $s_{new} \coloneqq 32 + 224 = 256$ 
-   	\State \Return $\frac{s_{new}}{s_{old}} = \frac{256}{128} = 2$
+  \State $s_{old} \coloneqq 4^2 \cdot 8$Byte = $128$ Byte
+  \State \texttt{size\_not\_null\_data} $\coloneqq 0.25 \cdot s_{old} = 32$ Byte
+  \State \texttt{tree\_size} $\coloneqq \left(\frac{1}{3}\left( 4^2 - 1 \right) \cdot 5 + 0.25 \cdot 4^2 \right) \cdot 8 \text{ Byte} - 8 \text{ Byte} = 224$ Byte
+  \State $s_{new} \coloneqq 32 + 224 = 256$
+    \State \Return $\frac{s_{new}}{s_{old}} = \frac{256}{128} = 2$
 \end{algorithmic}
 \end{algorithm}\par
 \vspace*{3mm}
@@ -427,11 +414,11 @@ First we explain the idea of the function $g$, which computes the storage for th
 \begin{algorithm}
 {g($e, x$)} \par
 \begin{algorithmic}[1]
-	\State $s_{old} \coloneqq 4^2 \cdot 8$Byte = $128$ Byte
-	\State \texttt{size\_not\_null\_data} $\coloneqq 0.25 \cdot s_{old} = 32$ Byte
-	\State \texttt{tree\_size} $\coloneqq \left( (log_4(4^2) - 1) \cdot 5 + 0.25 \cdot 4^2 \right) \cdot 8 \text{ Byte} - 8 \text{ Byte} = 64 \text{ Byte}$
-	\State $s_{new} \coloneqq 32 + 64= 96$ 
-   	\State \Return $\frac{s_{new}}{s_{old}} = \frac{96}{128} = 0.75$
+  \State $s_{old} \coloneqq 4^2 \cdot 8$Byte = $128$ Byte
+  \State \texttt{size\_not\_null\_data} $\coloneqq 0.25 \cdot s_{old} = 32$ Byte
+  \State \texttt{tree\_size} $\coloneqq \left( (log_4(4^2) - 1) \cdot 5 + 0.25 \cdot 4^2 \right) \cdot 8 \text{ Byte} - 8 \text{ Byte} = 64 \text{ Byte}$
+  \State $s_{new} \coloneqq 32 + 64= 96$
+    \State \Return $\frac{s_{new}}{s_{old}} = \frac{96}{128} = 0.75$
 \end{algorithmic}
 \end{algorithm}\par
 \vspace*{15mm}
@@ -468,93 +455,91 @@ By $R2$ we first have to split in $y-$direction. This means we have to calculate
 \begin{figure}[H]
 \centering
 \begin{tikzpicture}[>=latex, thick, inner sep=0pt, scale=0.5]
-	
-	
-	\draw[black,thick,dashed] (0,0) -- (16.6,0) -- (16.6,-11.8) -- (0,-11.8) -- (0,0);
-	
-	\node[circle, fill, draw=black, minimum size=2pt](a) at (5.92,-0.35) {};
-	\node[circle, fill, draw=black, minimum size=2pt](b) at (13.64,-0.69) {};
-	\node[circle, fill, draw=black, minimum size=2pt](c) at (14.26,-1.12) {};
-	\node[circle, fill, draw=black, minimum size=2pt](d) at (11.07,-1.73) {};
-	\node[circle, fill, draw=black, minimum size=2pt](e) at (2.08,-2.75) {};
-	\node[circle, fill, draw=black, minimum size=2pt](f) at (12.38,-3.42) {};
-	\node[circle, fill, draw=black, minimum size=2pt](g) at (15.67,-4.08) {};
-	\node[circle, fill, draw=black, minimum size=2pt](h) at (4.77,-5.32) {};
-	\node[circle, fill, draw=black, minimum size=2pt](i) at (3.48,-6.33) {};
-	\node[circle, fill, draw=black, minimum size=2pt](j) at (14.75,-8.16) {};
-	\node[circle, fill, draw=black, minimum size=2pt](k) at (8.05,-9.56) {};
-	\node[circle, fill, draw=black, minimum size=2pt](l) at (12.56,-10.3) {};
-	\node[circle, fill, draw=black, minimum size=2pt](m) at (0.67,-11.2) {};
-		
-		
-	\node[](A) at (6.22,-0.6) {$A$};
-	\node[](B) at (13.28,-0.9) {$B$};
-	\node[](C) at (14.56,-1.42) {$C$};
-	\node[](D) at (11.37,-2.03) {$D$};
-	\node[](E) at (2.38,-3.05) {$E$};
-	\node[](F) at (12.68,-3.72) {$F$};
-	\node[](G) at (15.97,-4.38) {$G$};
-	\node[](H) at (5.07,-5.62) {$H$};
-	\node[](I) at (3.78,-6.63) {$I$};
-	\node[](J) at (15.05,-8.46) {$J$};
-	\node[](K) at (8.35,-9.86) {$K$};
-	\node[](L) at (12.86,-10.6) {$L$};
-	\node[](M) at (1.1,-11.5) {$M$};
 
-	\node[](a_start) at (5.92,0) {};
-	\node[](a_ende) at (5.92,-1.73) {};
-	
-	\node[](b_start) at (13.64,0) {};
-	\node[](b_ende) at (13.64,-1.12) {};
 
-	\node[](c_start) at (12.38,-1.12) {};
-	\node[](c_ende) at (16.6,-1.12) {};
-	
-	\node[](d_start) at (0.0,-1.73) {};
-	\node[](d_ende) at (12.38,-1.73) {};
-	
-	\node[](e_start) at (2.08,-1.73) {};
-	\node[](e_ende) at (2.08,-4.08) {};
-	
-	\node[](f_start) at (12.38,0) {};
-	\node[](f_ende) at (12.38,-4.08) {};
-	
-	\node[](g_start) at (0.0,-4.08) {};
-	\node[](g_ende) at (16.6,-4.08) {};
-	
-	\node[](h_start) at (4.77,-4.08) {};
-	\node[](h_ende) at (4.77,-6.33) {};
-	
-	\node[](i_start) at (0.0,-6.33) {};
-	\node[](i_ende) at (8.05,-6.33) {};
-	
-	\node[](j_start) at (14.75,-4.08) {};
-	\node[](j_ende) at (14.75,-10.3) {};
-	
-	\node[](k_start) at (8.05,-4.08) {};
-	\node[](k_ende) at (8.05,-11.8) {};
+  \draw[black,thick,dashed] (0,0) -- (16.6,0) -- (16.6,-11.8) -- (0,-11.8) -- (0,0);
 
-	\node[](l_start) at (8.05,-10.3) {};
-	\node[](l_ende) at (16.6,-10.3) {};
+  \node[circle, fill, draw=black, minimum size=2pt](a) at (5.92,-0.35) {};
+  \node[circle, fill, draw=black, minimum size=2pt](b) at (13.64,-0.69) {};
+  \node[circle, fill, draw=black, minimum size=2pt](c) at (14.26,-1.12) {};
+  \node[circle, fill, draw=black, minimum size=2pt](d) at (11.07,-1.73) {};
+  \node[circle, fill, draw=black, minimum size=2pt](e) at (2.08,-2.75) {};
+  \node[circle, fill, draw=black, minimum size=2pt](f) at (12.38,-3.42) {};
+  \node[circle, fill, draw=black, minimum size=2pt](g) at (15.67,-4.08) {};
+  \node[circle, fill, draw=black, minimum size=2pt](h) at (4.77,-5.32) {};
+  \node[circle, fill, draw=black, minimum size=2pt](i) at (3.48,-6.33) {};
+  \node[circle, fill, draw=black, minimum size=2pt](j) at (14.75,-8.16) {};
+  \node[circle, fill, draw=black, minimum size=2pt](k) at (8.05,-9.56) {};
+  \node[circle, fill, draw=black, minimum size=2pt](l) at (12.56,-10.3) {};
+  \node[circle, fill, draw=black, minimum size=2pt](m) at (0.67,-11.2) {};
 
-	\node[](m_start) at (0.67,-6.33) {};
-	\node[](m_ende) at (0.67,-11.8) {};
-	
 
-	% horizontale Linen	
-	\draw[-, line width=1pt](g_start) edge (g_ende);			
+  \node[](A) at (6.22,-0.6) {$A$};
+  \node[](B) at (13.28,-0.9) {$B$};
+  \node[](C) at (14.56,-1.42) {$C$};
+  \node[](D) at (11.37,-2.03) {$D$};
+  \node[](E) at (2.38,-3.05) {$E$};
+  \node[](F) at (12.68,-3.72) {$F$};
+  \node[](G) at (15.97,-4.38) {$G$};
+  \node[](H) at (5.07,-5.62) {$H$};
+  \node[](I) at (3.78,-6.63) {$I$};
+  \node[](J) at (15.05,-8.46) {$J$};
+  \node[](K) at (8.35,-9.86) {$K$};
+  \node[](L) at (12.86,-10.6) {$L$};
+  \node[](M) at (1.1,-11.5) {$M$};
+
+  \node[](a_start) at (5.92,0) {};
+  \node[](a_ende) at (5.92,-1.73) {};
+
+  \node[](b_start) at (13.64,0) {};
+  \node[](b_ende) at (13.64,-1.12) {};
+
+  \node[](c_start) at (12.38,-1.12) {};
+  \node[](c_ende) at (16.6,-1.12) {};
+
+  \node[](d_start) at (0.0,-1.73) {};
+  \node[](d_ende) at (12.38,-1.73) {};
+
+  \node[](e_start) at (2.08,-1.73) {};
+  \node[](e_ende) at (2.08,-4.08) {};
+
+  \node[](f_start) at (12.38,0) {};
+  \node[](f_ende) at (12.38,-4.08) {};
+
+  \node[](g_start) at (0.0,-4.08) {};
+  \node[](g_ende) at (16.6,-4.08) {};
+
+  \node[](h_start) at (4.77,-4.08) {};
+  \node[](h_ende) at (4.77,-6.33) {};
+
+  \node[](i_start) at (0.0,-6.33) {};
+  \node[](i_ende) at (8.05,-6.33) {};
+
+  \node[](j_start) at (14.75,-4.08) {};
+  \node[](j_ende) at (14.75,-10.3) {};
+
+  \node[](k_start) at (8.05,-4.08) {};
+  \node[](k_ende) at (8.05,-11.8) {};
+
+  \node[](l_start) at (8.05,-10.3) {};
+  \node[](l_ende) at (16.6,-10.3) {};
+
+  \node[](m_start) at (0.67,-6.33) {};
+  \node[](m_ende) at (0.67,-11.8) {};
+
+
+  % horizontale Linen
+  \draw[-, line width=1pt](g_start) edge (g_ende);
 \end{tikzpicture}
-\label{Result after step 1}
 \end{figure} \par
 \end{minipage} \hspace*{5mm}
 \begin{minipage}[t]{0.45\textwidth}
-	\begin{figure}[H]
-		\centering
-		\begin{tikzpicture}[>=latex, thick, inner sep=0pt, scale=0.5]
-			\node[circle, draw=black, minimum size=15pt](G) at (0,0) {$G$};
-		\end{tikzpicture}
-	\label{Result after step 1 tree}
-	\end{figure} \par
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[>=latex, thick, inner sep=0pt, scale=0.5]
+      \node[circle, draw=black, minimum size=15pt](G) at (0,0) {$G$};
+    \end{tikzpicture}
+  \end{figure} \par
 \end{minipage} \par
 \vspace*{15mm}
 
@@ -584,102 +569,100 @@ By $R3$, we have to order the points above, as the left child and the points bel
 \begin{figure}[H]
 \centering
 \begin{tikzpicture}[>=latex, thick, inner sep=0pt, scale=0.5]
-	
-	
-	\draw[black,thick,dashed] (0,0) -- (16.6,0) -- (16.6,-11.8) -- (0,-11.8) -- (0,0);
-	
-	\node[circle, fill, draw=black, minimum size=2pt](a) at (5.92,-0.35) {};
-	\node[circle, fill, draw=black, minimum size=2pt](b) at (13.64,-0.69) {};
-	\node[circle, fill, draw=black, minimum size=2pt](c) at (14.26,-1.12) {};
-	\node[circle, fill, draw=black, minimum size=2pt](d) at (11.07,-1.73) {};
-	\node[circle, fill, draw=black, minimum size=2pt](e) at (2.08,-2.75) {};
-	\node[circle, fill, draw=black, minimum size=2pt](f) at (12.38,-3.42) {};
-	\node[circle, fill, draw=black, minimum size=2pt](g) at (15.67,-4.08) {};
-	\node[circle, fill, draw=black, minimum size=2pt](h) at (4.77,-5.32) {};
-	\node[circle, fill, draw=black, minimum size=2pt](i) at (3.48,-6.33) {};
-	\node[circle, fill, draw=black, minimum size=2pt](j) at (14.75,-8.16) {};
-	\node[circle, fill, draw=black, minimum size=2pt](k) at (8.05,-9.56) {};
-	\node[circle, fill, draw=black, minimum size=2pt](l) at (12.56,-10.3) {};
-	\node[circle, fill, draw=black, minimum size=2pt](m) at (0.67,-11.2) {};
-		
-		
-	\node[](A) at (6.22,-0.6) {$A$};
-	\node[](B) at (13.28,-0.9) {$B$};
-	\node[](C) at (14.56,-1.42) {$C$};
-	\node[](D) at (11.37,-2.03) {$D$};
-	\node[](E) at (2.38,-3.05) {$E$};
-	\node[](F) at (12.68,-3.72) {$F$};
-	\node[](G) at (15.97,-4.38) {$G$};
-	\node[](H) at (5.07,-5.62) {$H$};
-	\node[](I) at (3.78,-6.63) {$I$};
-	\node[](J) at (15.05,-8.46) {$J$};
-	\node[](K) at (8.35,-9.86) {$K$};
-	\node[](L) at (12.86,-10.6) {$L$};
-	\node[](M) at (1.1,-11.5) {$M$};
-
-	\node[](a_start) at (5.92,0) {};
-	\node[](a_ende) at (5.92,-1.73) {};
-	
-	\node[](b_start) at (13.64,0) {};
-	\node[](b_ende) at (13.64,-1.12) {};
-
-	\node[](c_start) at (12.38,-1.12) {};
-	\node[](c_ende) at (16.6,-1.12) {};
-	
-	\node[](d_start) at (0.0,-1.73) {};
-	\node[](d_ende) at (12.38,-1.73) {};
-	
-	\node[](e_start) at (2.08,-1.73) {};
-	\node[](e_ende) at (2.08,-4.08) {};
-	
-	\node[](f_start) at (12.38,0) {};
-	\node[](f_ende) at (12.38,-4.08) {};
-	
-	\node[](g_start) at (0.0,-4.08) {};
-	\node[](g_ende) at (16.6,-4.08) {};
-	
-	\node[](h_start) at (4.77,-4.08) {};
-	\node[](h_ende) at (4.77,-6.33) {};
-	
-	\node[](i_start) at (0.0,-6.33) {};
-	\node[](i_ende) at (8.05,-6.33) {};
-	
-	\node[](j_start) at (14.75,-4.08) {};
-	\node[](j_ende) at (14.75,-10.3) {};
-	
-	\node[](k_start) at (8.05,-4.08) {};
-	\node[](k_ende) at (8.05,-11.8) {};
-
-	\node[](l_start) at (8.05,-10.3) {};
-	\node[](l_ende) at (16.6,-10.3) {};
-
-	\node[](m_start) at (0.67,-6.33) {};
-	\node[](m_ende) at (0.67,-11.8) {};
-	
-	% vertikale Linen
-	\draw[-, line width=1pt](f_start) edge (f_ende);			
-	\draw[-, line width=1pt](k_start) edge (k_ende);	
 
 
-	% horizontale Linen		
-	\draw[-, line width=1pt](g_start) edge (g_ende);			
+  \draw[black,thick,dashed] (0,0) -- (16.6,0) -- (16.6,-11.8) -- (0,-11.8) -- (0,0);
+
+  \node[circle, fill, draw=black, minimum size=2pt](a) at (5.92,-0.35) {};
+  \node[circle, fill, draw=black, minimum size=2pt](b) at (13.64,-0.69) {};
+  \node[circle, fill, draw=black, minimum size=2pt](c) at (14.26,-1.12) {};
+  \node[circle, fill, draw=black, minimum size=2pt](d) at (11.07,-1.73) {};
+  \node[circle, fill, draw=black, minimum size=2pt](e) at (2.08,-2.75) {};
+  \node[circle, fill, draw=black, minimum size=2pt](f) at (12.38,-3.42) {};
+  \node[circle, fill, draw=black, minimum size=2pt](g) at (15.67,-4.08) {};
+  \node[circle, fill, draw=black, minimum size=2pt](h) at (4.77,-5.32) {};
+  \node[circle, fill, draw=black, minimum size=2pt](i) at (3.48,-6.33) {};
+  \node[circle, fill, draw=black, minimum size=2pt](j) at (14.75,-8.16) {};
+  \node[circle, fill, draw=black, minimum size=2pt](k) at (8.05,-9.56) {};
+  \node[circle, fill, draw=black, minimum size=2pt](l) at (12.56,-10.3) {};
+  \node[circle, fill, draw=black, minimum size=2pt](m) at (0.67,-11.2) {};
+
+
+  \node[](A) at (6.22,-0.6) {$A$};
+  \node[](B) at (13.28,-0.9) {$B$};
+  \node[](C) at (14.56,-1.42) {$C$};
+  \node[](D) at (11.37,-2.03) {$D$};
+  \node[](E) at (2.38,-3.05) {$E$};
+  \node[](F) at (12.68,-3.72) {$F$};
+  \node[](G) at (15.97,-4.38) {$G$};
+  \node[](H) at (5.07,-5.62) {$H$};
+  \node[](I) at (3.78,-6.63) {$I$};
+  \node[](J) at (15.05,-8.46) {$J$};
+  \node[](K) at (8.35,-9.86) {$K$};
+  \node[](L) at (12.86,-10.6) {$L$};
+  \node[](M) at (1.1,-11.5) {$M$};
+
+  \node[](a_start) at (5.92,0) {};
+  \node[](a_ende) at (5.92,-1.73) {};
+
+  \node[](b_start) at (13.64,0) {};
+  \node[](b_ende) at (13.64,-1.12) {};
+
+  \node[](c_start) at (12.38,-1.12) {};
+  \node[](c_ende) at (16.6,-1.12) {};
+
+  \node[](d_start) at (0.0,-1.73) {};
+  \node[](d_ende) at (12.38,-1.73) {};
+
+  \node[](e_start) at (2.08,-1.73) {};
+  \node[](e_ende) at (2.08,-4.08) {};
+
+  \node[](f_start) at (12.38,0) {};
+  \node[](f_ende) at (12.38,-4.08) {};
+
+  \node[](g_start) at (0.0,-4.08) {};
+  \node[](g_ende) at (16.6,-4.08) {};
+
+  \node[](h_start) at (4.77,-4.08) {};
+  \node[](h_ende) at (4.77,-6.33) {};
+
+  \node[](i_start) at (0.0,-6.33) {};
+  \node[](i_ende) at (8.05,-6.33) {};
+
+  \node[](j_start) at (14.75,-4.08) {};
+  \node[](j_ende) at (14.75,-10.3) {};
+
+  \node[](k_start) at (8.05,-4.08) {};
+  \node[](k_ende) at (8.05,-11.8) {};
+
+  \node[](l_start) at (8.05,-10.3) {};
+  \node[](l_ende) at (16.6,-10.3) {};
+
+  \node[](m_start) at (0.67,-6.33) {};
+  \node[](m_ende) at (0.67,-11.8) {};
+
+  % vertikale Linen
+  \draw[-, line width=1pt](f_start) edge (f_ende);
+  \draw[-, line width=1pt](k_start) edge (k_ende);
+
+
+  % horizontale Linen
+  \draw[-, line width=1pt](g_start) edge (g_ende);
 \end{tikzpicture}
-\label{Result after step 1}
 \end{figure} \par
 \end{minipage} \hspace*{5mm}
 \begin{minipage}[t]{0.45\textwidth}
-	\begin{figure}[H]
-		\centering
-		\begin{tikzpicture}[>=latex, thick, inner sep=0pt, scale=0.5]
-			\node[circle, draw=black, minimum size=15pt](G) at (0,0) {$G$};
-			\node[circle, draw=black, minimum size=15pt](F) at (-3,-2) {$F$};
-			\node[circle, draw=black, minimum size=15pt](K) at (3,-2) {$K$};
-			
-			\draw[-, line width=1pt](G) edge (F);
-			\draw[-, line width=1pt](G) edge (K);
-		\end{tikzpicture}
-	\label{Result after step 1 tree}
-	\end{figure} \par
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[>=latex, thick, inner sep=0pt, scale=0.5]
+      \node[circle, draw=black, minimum size=15pt](G) at (0,0) {$G$};
+      \node[circle, draw=black, minimum size=15pt](F) at (-3,-2) {$F$};
+      \node[circle, draw=black, minimum size=15pt](K) at (3,-2) {$K$};
+
+      \draw[-, line width=1pt](G) edge (F);
+      \draw[-, line width=1pt](G) edge (K);
+    \end{tikzpicture}
+  \end{figure} \par
 \end{minipage}
 \vspace*{15mm}
 
@@ -707,119 +690,117 @@ Updating the tree and the lines in the plane yields to: \par
 \begin{figure}[H]
 \centering
 \begin{tikzpicture}[>=latex, thick, inner sep=0pt, scale=0.5]
-	
-	
-	\draw[black,thick,dashed] (0,0) -- (16.6,0) -- (16.6,-11.8) -- (0,-11.8) -- (0,0);
-	
-	\node[circle, fill, draw=black, minimum size=2pt](a) at (5.92,-0.35) {};
-	\node[circle, fill, draw=black, minimum size=2pt](b) at (13.64,-0.69) {};
-	\node[circle, fill, draw=black, minimum size=2pt](c) at (14.26,-1.12) {};
-	\node[circle, fill, draw=black, minimum size=2pt](d) at (11.07,-1.73) {};
-	\node[circle, fill, draw=black, minimum size=2pt](e) at (2.08,-2.75) {};
-	\node[circle, fill, draw=black, minimum size=2pt](f) at (12.38,-3.42) {};
-	\node[circle, fill, draw=black, minimum size=2pt](g) at (15.67,-4.08) {};
-	\node[circle, fill, draw=black, minimum size=2pt](h) at (4.77,-5.32) {};
-	\node[circle, fill, draw=black, minimum size=2pt](i) at (3.48,-6.33) {};
-	\node[circle, fill, draw=black, minimum size=2pt](j) at (14.75,-8.16) {};
-	\node[circle, fill, draw=black, minimum size=2pt](k) at (8.05,-9.56) {};
-	\node[circle, fill, draw=black, minimum size=2pt](l) at (12.56,-10.3) {};
-	\node[circle, fill, draw=black, minimum size=2pt](m) at (0.67,-11.2) {};
-		
-		
-	\node[](A) at (6.22,-0.6) {$A$};
-	\node[](B) at (13.28,-0.9) {$B$};
-	\node[](C) at (14.56,-1.42) {$C$};
-	\node[](D) at (11.37,-2.03) {$D$};
-	\node[](E) at (2.38,-3.05) {$E$};
-	\node[](F) at (12.68,-3.72) {$F$};
-	\node[](G) at (15.97,-4.38) {$G$};
-	\node[](H) at (5.07,-5.62) {$H$};
-	\node[](I) at (3.78,-6.63) {$I$};
-	\node[](J) at (15.05,-8.46) {$J$};
-	\node[](K) at (8.35,-9.86) {$K$};
-	\node[](L) at (12.86,-10.6) {$L$};
-	\node[](M) at (1.1,-11.5) {$M$};
-
-	\node[](a_start) at (5.92,0) {};
-	\node[](a_ende) at (5.92,-1.73) {};
-	
-	\node[](b_start) at (13.64,0) {};
-	\node[](b_ende) at (13.64,-1.12) {};
-
-	\node[](c_start) at (12.38,-1.12) {};
-	\node[](c_ende) at (16.6,-1.12) {};
-	
-	\node[](d_start) at (0.0,-1.73) {};
-	\node[](d_ende) at (12.38,-1.73) {};
-	
-	\node[](e_start) at (2.08,-1.73) {};
-	\node[](e_ende) at (2.08,-4.08) {};
-	
-	\node[](f_start) at (12.38,0) {};
-	\node[](f_ende) at (12.38,-4.08) {};
-	
-	\node[](g_start) at (0.0,-4.08) {};
-	\node[](g_ende) at (16.6,-4.08) {};
-	
-	\node[](h_start) at (4.77,-4.08) {};
-	\node[](h_ende) at (4.77,-6.33) {};
-	
-	\node[](i_start) at (0.0,-6.33) {};
-	\node[](i_ende) at (8.05,-6.33) {};
-	
-	\node[](j_start) at (14.75,-4.08) {};
-	\node[](j_ende) at (14.75,-10.3) {};
-	
-	\node[](k_start) at (8.05,-4.08) {};
-	\node[](k_ende) at (8.05,-11.8) {};
-
-	\node[](l_start) at (8.05,-10.3) {};
-	\node[](l_ende) at (16.6,-10.3) {};
-
-	\node[](m_start) at (0.67,-6.33) {};
-	\node[](m_ende) at (0.67,-11.8) {};
-	
-	% vertikale Linen			
-	\draw[-, line width=1pt](f_start) edge (f_ende);				
-	\draw[-, line width=1pt](k_start) edge (k_ende);	
 
 
+  \draw[black,thick,dashed] (0,0) -- (16.6,0) -- (16.6,-11.8) -- (0,-11.8) -- (0,0);
 
-	% horizontale Linen
-	\draw[-, line width=1pt](c_start) edge (c_ende);	
-	\draw[-, line width=1pt](d_start) edge (d_ende);		
-	\draw[-, line width=1pt](g_start) edge (g_ende);			
-	\draw[-, line width=1pt](i_start) edge (i_ende);			
-	\draw[-, line width=1pt](l_start) edge (l_ende);			
+  \node[circle, fill, draw=black, minimum size=2pt](a) at (5.92,-0.35) {};
+  \node[circle, fill, draw=black, minimum size=2pt](b) at (13.64,-0.69) {};
+  \node[circle, fill, draw=black, minimum size=2pt](c) at (14.26,-1.12) {};
+  \node[circle, fill, draw=black, minimum size=2pt](d) at (11.07,-1.73) {};
+  \node[circle, fill, draw=black, minimum size=2pt](e) at (2.08,-2.75) {};
+  \node[circle, fill, draw=black, minimum size=2pt](f) at (12.38,-3.42) {};
+  \node[circle, fill, draw=black, minimum size=2pt](g) at (15.67,-4.08) {};
+  \node[circle, fill, draw=black, minimum size=2pt](h) at (4.77,-5.32) {};
+  \node[circle, fill, draw=black, minimum size=2pt](i) at (3.48,-6.33) {};
+  \node[circle, fill, draw=black, minimum size=2pt](j) at (14.75,-8.16) {};
+  \node[circle, fill, draw=black, minimum size=2pt](k) at (8.05,-9.56) {};
+  \node[circle, fill, draw=black, minimum size=2pt](l) at (12.56,-10.3) {};
+  \node[circle, fill, draw=black, minimum size=2pt](m) at (0.67,-11.2) {};
+
+
+  \node[](A) at (6.22,-0.6) {$A$};
+  \node[](B) at (13.28,-0.9) {$B$};
+  \node[](C) at (14.56,-1.42) {$C$};
+  \node[](D) at (11.37,-2.03) {$D$};
+  \node[](E) at (2.38,-3.05) {$E$};
+  \node[](F) at (12.68,-3.72) {$F$};
+  \node[](G) at (15.97,-4.38) {$G$};
+  \node[](H) at (5.07,-5.62) {$H$};
+  \node[](I) at (3.78,-6.63) {$I$};
+  \node[](J) at (15.05,-8.46) {$J$};
+  \node[](K) at (8.35,-9.86) {$K$};
+  \node[](L) at (12.86,-10.6) {$L$};
+  \node[](M) at (1.1,-11.5) {$M$};
+
+  \node[](a_start) at (5.92,0) {};
+  \node[](a_ende) at (5.92,-1.73) {};
+
+  \node[](b_start) at (13.64,0) {};
+  \node[](b_ende) at (13.64,-1.12) {};
+
+  \node[](c_start) at (12.38,-1.12) {};
+  \node[](c_ende) at (16.6,-1.12) {};
+
+  \node[](d_start) at (0.0,-1.73) {};
+  \node[](d_ende) at (12.38,-1.73) {};
+
+  \node[](e_start) at (2.08,-1.73) {};
+  \node[](e_ende) at (2.08,-4.08) {};
+
+  \node[](f_start) at (12.38,0) {};
+  \node[](f_ende) at (12.38,-4.08) {};
+
+  \node[](g_start) at (0.0,-4.08) {};
+  \node[](g_ende) at (16.6,-4.08) {};
+
+  \node[](h_start) at (4.77,-4.08) {};
+  \node[](h_ende) at (4.77,-6.33) {};
+
+  \node[](i_start) at (0.0,-6.33) {};
+  \node[](i_ende) at (8.05,-6.33) {};
+
+  \node[](j_start) at (14.75,-4.08) {};
+  \node[](j_ende) at (14.75,-10.3) {};
+
+  \node[](k_start) at (8.05,-4.08) {};
+  \node[](k_ende) at (8.05,-11.8) {};
+
+  \node[](l_start) at (8.05,-10.3) {};
+  \node[](l_ende) at (16.6,-10.3) {};
+
+  \node[](m_start) at (0.67,-6.33) {};
+  \node[](m_ende) at (0.67,-11.8) {};
+
+  % vertikale Linen
+  \draw[-, line width=1pt](f_start) edge (f_ende);
+  \draw[-, line width=1pt](k_start) edge (k_ende);
+
+
+
+  % horizontale Linen
+  \draw[-, line width=1pt](c_start) edge (c_ende);
+  \draw[-, line width=1pt](d_start) edge (d_ende);
+  \draw[-, line width=1pt](g_start) edge (g_ende);
+  \draw[-, line width=1pt](i_start) edge (i_ende);
+  \draw[-, line width=1pt](l_start) edge (l_ende);
 \end{tikzpicture}
-\label{Result after step 1}
 \end{figure} \par
 \end{minipage} \hspace*{5mm}
 \begin{minipage}[t]{0.45\textwidth}
-	\begin{figure}[H]
-		\centering
-		\begin{tikzpicture}[>=latex, thick, inner sep=0pt, scale=0.5]
-			\node[circle, draw=black, minimum size=15pt](G) at (0,0) {$G$};
-			
-			\node[circle, draw=black, minimum size=15pt](F) at (-3,-2) {$F$};
-			\node[circle, draw=black, minimum size=15pt](K) at (3,-2) {$K$};
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[>=latex, thick, inner sep=0pt, scale=0.5]
+      \node[circle, draw=black, minimum size=15pt](G) at (0,0) {$G$};
 
-			\node[circle, draw=black, minimum size=15pt](D) at (-5,-4) {$D$};
-			\node[circle, draw=black, minimum size=15pt](C) at (-1,-4) {$C$};
-			\node[circle, draw=black, minimum size=15pt](I) at (1,-4) {$I$};
-			\node[circle, draw=black, minimum size=15pt](L) at (5,-4) {$L$};
-			
-			\draw[-, line width=1pt](G) edge (F);
-			\draw[-, line width=1pt](G) edge (K);
-			
-			\draw[-, line width=1pt](F) edge (D);
-			\draw[-, line width=1pt](F) edge (C);
-			
-			\draw[-, line width=1pt](K) edge (I);
-			\draw[-, line width=1pt](K) edge (L);
-		\end{tikzpicture}
-	\label{Result after step 1 tree}
-	\end{figure} \par
+      \node[circle, draw=black, minimum size=15pt](F) at (-3,-2) {$F$};
+      \node[circle, draw=black, minimum size=15pt](K) at (3,-2) {$K$};
+
+      \node[circle, draw=black, minimum size=15pt](D) at (-5,-4) {$D$};
+      \node[circle, draw=black, minimum size=15pt](C) at (-1,-4) {$C$};
+      \node[circle, draw=black, minimum size=15pt](I) at (1,-4) {$I$};
+      \node[circle, draw=black, minimum size=15pt](L) at (5,-4) {$L$};
+
+      \draw[-, line width=1pt](G) edge (F);
+      \draw[-, line width=1pt](G) edge (K);
+
+      \draw[-, line width=1pt](F) edge (D);
+      \draw[-, line width=1pt](F) edge (C);
+
+      \draw[-, line width=1pt](K) edge (I);
+      \draw[-, line width=1pt](K) edge (L);
+    \end{tikzpicture}
+  \end{figure} \par
 \end{minipage}
 \newpage
 
@@ -827,43 +808,42 @@ Updating the tree and the lines in the plane yields to: \par
 \underline{Step 4.} \par
 Now, we are splitting in $x-$direction. Since each remaining list only contains at least one element, we are done after insert those elements in the $kD-$tree. Again, by using $R3$ for inserting the new child nodes, we get: \par
 \begin{figure}[H]
-	\centering
-	\begin{tikzpicture}[>=latex, thick, inner sep=0pt, scale=0.5]
-		\node[circle, draw=black, minimum size=15pt](G) at (0,0) {$G$};
-		
-		\node[circle, draw=black, minimum size=15pt](F) at (-7,-2) {$F$};
-		\node[circle, draw=black, minimum size=15pt](K) at (7,-2) {$K$};
+  \centering
+  \begin{tikzpicture}[>=latex, thick, inner sep=0pt, scale=0.5]
+    \node[circle, draw=black, minimum size=15pt](G) at (0,0) {$G$};
 
-		\node[circle, draw=black, minimum size=15pt](D) at (-10,-4) {$D$};
-		\node[circle, draw=black, minimum size=15pt](C) at (-4,-4) {$C$};
-		\node[circle, draw=black, minimum size=15pt](I) at (4,-4) {$I$};
-		\node[circle, draw=black, minimum size=15pt](L) at (10,-4) {$L$};
+    \node[circle, draw=black, minimum size=15pt](F) at (-7,-2) {$F$};
+    \node[circle, draw=black, minimum size=15pt](K) at (7,-2) {$K$};
 
-		\node[circle, draw=black, minimum size=15pt](A) at (-11.5,-7) {$A$};
-		\node[circle, draw=black, minimum size=15pt](E) at (-8.5,-7) {$E$};
-		\node[circle, draw=black, minimum size=15pt](B) at (-5.5,-7) {$B$};
-		\node[circle, draw=black, minimum size=15pt](H) at (2.5,-7) {$H$};
-		\node[circle, draw=black, minimum size=15pt](M) at (5.5,-7) {$M$};
-		\node[circle, draw=black, minimum size=15pt](J) at (8.5,-7) {$J$};
+    \node[circle, draw=black, minimum size=15pt](D) at (-10,-4) {$D$};
+    \node[circle, draw=black, minimum size=15pt](C) at (-4,-4) {$C$};
+    \node[circle, draw=black, minimum size=15pt](I) at (4,-4) {$I$};
+    \node[circle, draw=black, minimum size=15pt](L) at (10,-4) {$L$};
 
-		
-		\draw[-, line width=1pt](G) edge (F);
-		\draw[-, line width=1pt](G) edge (K);
-		
-		\draw[-, line width=1pt](F) edge (D);
-		\draw[-, line width=1pt](F) edge (C);
-		
-		\draw[-, line width=1pt](K) edge (I);
-		\draw[-, line width=1pt](K) edge (L);
+    \node[circle, draw=black, minimum size=15pt](A) at (-11.5,-7) {$A$};
+    \node[circle, draw=black, minimum size=15pt](E) at (-8.5,-7) {$E$};
+    \node[circle, draw=black, minimum size=15pt](B) at (-5.5,-7) {$B$};
+    \node[circle, draw=black, minimum size=15pt](H) at (2.5,-7) {$H$};
+    \node[circle, draw=black, minimum size=15pt](M) at (5.5,-7) {$M$};
+    \node[circle, draw=black, minimum size=15pt](J) at (8.5,-7) {$J$};
 
-		\draw[-, line width=1pt](D) edge (A);
-		\draw[-, line width=1pt](D) edge (E);
-		\draw[-, line width=1pt](C) edge (B);
-		\draw[-, line width=1pt](I) edge (H);
-		\draw[-, line width=1pt](I) edge (M);
-		\draw[-, line width=1pt](L) edge (J);
-	\end{tikzpicture}
-\label{Result after step 1 tree}
+
+    \draw[-, line width=1pt](G) edge (F);
+    \draw[-, line width=1pt](G) edge (K);
+
+    \draw[-, line width=1pt](F) edge (D);
+    \draw[-, line width=1pt](F) edge (C);
+
+    \draw[-, line width=1pt](K) edge (I);
+    \draw[-, line width=1pt](K) edge (L);
+
+    \draw[-, line width=1pt](D) edge (A);
+    \draw[-, line width=1pt](D) edge (E);
+    \draw[-, line width=1pt](C) edge (B);
+    \draw[-, line width=1pt](I) edge (H);
+    \draw[-, line width=1pt](I) edge (M);
+    \draw[-, line width=1pt](L) edge (J);
+  \end{tikzpicture}
 \end{figure} \par
 \vspace*{20mm}
 
@@ -872,95 +852,95 @@ Now, we are splitting in $x-$direction. Since each remaining list only contains 
 \renewcommand{\thefigure}{2.4.2}
 \centering
 \begin{tikzpicture}[>=latex, thick, inner sep=0pt, scale=1]
-	
-	
-	\draw[black,thick,dashed] (0,0) -- (16.6,0) -- (16.6,-11.8) -- (0,-11.8) -- (0,0);
-	
-	\node[circle, fill, draw=black, minimum size=12pt](a) at (5.92,-0.35) {};
-	\node[circle, fill, draw=black, minimum size=12pt](b) at (13.64,-0.69) {};
-	\node[circle, fill, draw=black, minimum size=12pt](c) at (14.26,-1.12) {};
-	\node[circle, fill, draw=black, minimum size=12pt](d) at (11.07,-1.73) {};
-	\node[circle, fill, draw=black, minimum size=12pt](e) at (2.08,-2.75) {};
-	\node[circle, fill, draw=black, minimum size=12pt](f) at (12.38,-3.42) {};
-	\node[circle, fill, draw=black, minimum size=12pt](g) at (15.67,-4.08) {};
-	\node[circle, fill, draw=black, minimum size=12pt](h) at (4.77,-5.32) {};
-	\node[circle, fill, draw=black, minimum size=12pt](i) at (3.48,-6.33) {};
-	\node[circle, fill, draw=black, minimum size=12pt](j) at (14.75,-8.16) {};
-	\node[circle, fill, draw=black, minimum size=12pt](k) at (8.05,-9.56) {};
-	\node[circle, fill, draw=black, minimum size=12pt](l) at (12.56,-10.3) {};
-	\node[circle, fill, draw=black, minimum size=12pt](m) at (0.67,-11.2) {};
-		
-		
-	\node[](A) at (6.22,-0.6) {$A$};
-	\node[](B) at (13.28,-0.9) {$B$};
-	\node[](C) at (14.56,-1.42) {$C$};
-	\node[](D) at (11.37,-2.03) {$D$};
-	\node[](E) at (2.38,-3.05) {$E$};
-	\node[](F) at (12.68,-3.72) {$F$};
-	\node[](G) at (15.97,-4.38) {$G$};
-	\node[](H) at (5.07,-5.62) {$H$};
-	\node[](I) at (3.78,-6.63) {$I$};
-	\node[](J) at (15.05,-8.46) {$J$};
-	\node[](K) at (8.35,-9.86) {$K$};
-	\node[](L) at (12.86,-10.6) {$L$};
-	\node[](M) at (1.1,-11.5) {$M$};
-
-	\node[](a_start) at (5.92,0) {};
-	\node[](a_ende) at (5.92,-1.73) {};
-	
-	\node[](b_start) at (13.64,0) {};
-	\node[](b_ende) at (13.64,-1.12) {};
-
-	\node[](c_start) at (12.38,-1.12) {};
-	\node[](c_ende) at (16.6,-1.12) {};
-	
-	\node[](d_start) at (0.0,-1.73) {};
-	\node[](d_ende) at (12.38,-1.73) {};
-	
-	\node[](e_start) at (2.08,-1.73) {};
-	\node[](e_ende) at (2.08,-4.08) {};
-	
-	\node[](f_start) at (12.38,0) {};
-	\node[](f_ende) at (12.38,-4.08) {};
-	
-	\node[](g_start) at (0.0,-4.08) {};
-	\node[](g_ende) at (16.6,-4.08) {};
-	
-	\node[](h_start) at (4.77,-4.08) {};
-	\node[](h_ende) at (4.77,-6.33) {};
-	
-	\node[](i_start) at (0.0,-6.33) {};
-	\node[](i_ende) at (8.05,-6.33) {};
-	
-	\node[](j_start) at (14.75,-4.08) {};
-	\node[](j_ende) at (14.75,-10.3) {};
-	
-	\node[](k_start) at (8.05,-4.08) {};
-	\node[](k_ende) at (8.05,-11.8) {};
-
-	\node[](l_start) at (8.05,-10.3) {};
-	\node[](l_ende) at (16.6,-10.3) {};
-
-	\node[](m_start) at (0.67,-6.33) {};
-	\node[](m_ende) at (0.67,-11.8) {};
-	
-	% vertikale Linen
-	\draw[-, line width=1pt](a_start) edge (a_ende);	
-	\draw[-, line width=1pt](b_start) edge (b_ende);		
-	\draw[-, line width=1pt](e_start) edge (e_ende);			
-	\draw[-, line width=1pt](f_start) edge (f_ende);			
-	\draw[-, line width=1pt](h_start) edge (h_ende);					
-	\draw[-, line width=1pt](j_start) edge (j_ende);	
-	\draw[-, line width=1pt](k_start) edge (k_ende);	
-	\draw[-, line width=1pt](m_start) edge (m_ende);
 
 
-	% horizontale Linen
-	\draw[-, line width=1pt](c_start) edge (c_ende);	
-	\draw[-, line width=1pt](d_start) edge (d_ende);		
-	\draw[-, line width=1pt](g_start) edge (g_ende);			
-	\draw[-, line width=1pt](i_start) edge (i_ende);			
-	\draw[-, line width=1pt](l_start) edge (l_ende);
+  \draw[black,thick,dashed] (0,0) -- (16.6,0) -- (16.6,-11.8) -- (0,-11.8) -- (0,0);
+
+  \node[circle, fill, draw=black, minimum size=12pt](a) at (5.92,-0.35) {};
+  \node[circle, fill, draw=black, minimum size=12pt](b) at (13.64,-0.69) {};
+  \node[circle, fill, draw=black, minimum size=12pt](c) at (14.26,-1.12) {};
+  \node[circle, fill, draw=black, minimum size=12pt](d) at (11.07,-1.73) {};
+  \node[circle, fill, draw=black, minimum size=12pt](e) at (2.08,-2.75) {};
+  \node[circle, fill, draw=black, minimum size=12pt](f) at (12.38,-3.42) {};
+  \node[circle, fill, draw=black, minimum size=12pt](g) at (15.67,-4.08) {};
+  \node[circle, fill, draw=black, minimum size=12pt](h) at (4.77,-5.32) {};
+  \node[circle, fill, draw=black, minimum size=12pt](i) at (3.48,-6.33) {};
+  \node[circle, fill, draw=black, minimum size=12pt](j) at (14.75,-8.16) {};
+  \node[circle, fill, draw=black, minimum size=12pt](k) at (8.05,-9.56) {};
+  \node[circle, fill, draw=black, minimum size=12pt](l) at (12.56,-10.3) {};
+  \node[circle, fill, draw=black, minimum size=12pt](m) at (0.67,-11.2) {};
+
+
+  \node[](A) at (6.22,-0.6) {$A$};
+  \node[](B) at (13.28,-0.9) {$B$};
+  \node[](C) at (14.56,-1.42) {$C$};
+  \node[](D) at (11.37,-2.03) {$D$};
+  \node[](E) at (2.38,-3.05) {$E$};
+  \node[](F) at (12.68,-3.72) {$F$};
+  \node[](G) at (15.97,-4.38) {$G$};
+  \node[](H) at (5.07,-5.62) {$H$};
+  \node[](I) at (3.78,-6.63) {$I$};
+  \node[](J) at (15.05,-8.46) {$J$};
+  \node[](K) at (8.35,-9.86) {$K$};
+  \node[](L) at (12.86,-10.6) {$L$};
+  \node[](M) at (1.1,-11.5) {$M$};
+
+  \node[](a_start) at (5.92,0) {};
+  \node[](a_ende) at (5.92,-1.73) {};
+
+  \node[](b_start) at (13.64,0) {};
+  \node[](b_ende) at (13.64,-1.12) {};
+
+  \node[](c_start) at (12.38,-1.12) {};
+  \node[](c_ende) at (16.6,-1.12) {};
+
+  \node[](d_start) at (0.0,-1.73) {};
+  \node[](d_ende) at (12.38,-1.73) {};
+
+  \node[](e_start) at (2.08,-1.73) {};
+  \node[](e_ende) at (2.08,-4.08) {};
+
+  \node[](f_start) at (12.38,0) {};
+  \node[](f_ende) at (12.38,-4.08) {};
+
+  \node[](g_start) at (0.0,-4.08) {};
+  \node[](g_ende) at (16.6,-4.08) {};
+
+  \node[](h_start) at (4.77,-4.08) {};
+  \node[](h_ende) at (4.77,-6.33) {};
+
+  \node[](i_start) at (0.0,-6.33) {};
+  \node[](i_ende) at (8.05,-6.33) {};
+
+  \node[](j_start) at (14.75,-4.08) {};
+  \node[](j_ende) at (14.75,-10.3) {};
+
+  \node[](k_start) at (8.05,-4.08) {};
+  \node[](k_ende) at (8.05,-11.8) {};
+
+  \node[](l_start) at (8.05,-10.3) {};
+  \node[](l_ende) at (16.6,-10.3) {};
+
+  \node[](m_start) at (0.67,-6.33) {};
+  \node[](m_ende) at (0.67,-11.8) {};
+
+  % vertikale Linen
+  \draw[-, line width=1pt](a_start) edge (a_ende);
+  \draw[-, line width=1pt](b_start) edge (b_ende);
+  \draw[-, line width=1pt](e_start) edge (e_ende);
+  \draw[-, line width=1pt](f_start) edge (f_ende);
+  \draw[-, line width=1pt](h_start) edge (h_ende);
+  \draw[-, line width=1pt](j_start) edge (j_ende);
+  \draw[-, line width=1pt](k_start) edge (k_ende);
+  \draw[-, line width=1pt](m_start) edge (m_ende);
+
+
+  % horizontale Linen
+  \draw[-, line width=1pt](c_start) edge (c_ende);
+  \draw[-, line width=1pt](d_start) edge (d_ende);
+  \draw[-, line width=1pt](g_start) edge (g_ende);
+  \draw[-, line width=1pt](i_start) edge (i_ende);
+  \draw[-, line width=1pt](l_start) edge (l_ende);
 
 \end{tikzpicture}
 \end{figure} \par
@@ -974,86 +954,94 @@ Now, we are splitting in $x-$direction. Since each remaining list only contains 
 
 \section*{\large Exercise 3 (Range Search in a kD-tree) {\normalsize \hfill (5 points)}}
 
-\#classes for the KDTree structure
-class kdNode(object):\\
-\hspace*{10mm}def \_\_init\_\_(self):\\
-\hspace*{10mm}\hspace*{10mm}self.value = None\\
-\hspace*{10mm}\hspace*{10mm}self.left = None\\
-\hspace*{10mm}\hspace*{10mm}self.right = None\\
+\begin{python}
+#classes for the KDTree structure
+class kdNode(object):
+    def __init__(self):
+        self.value = None
+        self.left = None
+        self.right = None
 
-class kdLeaf(object):\\
-\hspace*{10mm}def \_\_init\_\_(self):\\
-\hspace*{10mm}\hspace*{10mm}self.value = None\\
+class kdLeaf(object):
+    def __init__(self):
+        self.value = None
 
-k = 2 \#given by task\\
-\#function for building a KDTree\\
-def kdTree(points, level=0):\\
-\hspace*{10mm}dim = level \% k \#determines if points should be split by x or y axis\\
-\hspace*{10mm}axis = points[0].dtype.names[dim]\\
-\hspace*{10mm}median = (np.sort(points, order=axis)[len(points)-1][axis] +\\
-\hspace*{10mm}\hspace*{10mm}\hspace*{10mm}np.sort(points, order=axis)[0][axis]) / 2\\
-\hspace*{10mm}node = kdNode()\\
-\hspace*{10mm}node.value = median\\
-\hspace*{10mm}split\_list = splitList(points, median, axis) \#function that splits list into left and right\\
-\hspace*{10mm}left\_points = split\_list[0]\\
-\hspace*{10mm}if len(left\_points) == 1:\\
-\hspace*{10mm}\hspace*{10mm}node.left = kdLeaf()\\
-\hspace*{10mm}\hspace*{10mm}node.left.value = left\_points[0]\\
-\hspace*{10mm}else:\\
-\hspace*{10mm}\hspace*{10mm}node.left = kdTree(left\_points, level+1)\\
-\hspace*{10mm}right\_points = split\_list[1]\\
-\hspace*{10mm}if len(right\_points) == 1:\\
-\hspace*{10mm}\hspace*{10mm}node.right = kdLeaf()\\
-\hspace*{10mm}\hspace*{10mm}node.right.value = right\_points[0]\\
-\hspace*{10mm}else:\\
-\hspace*{10mm}\hspace*{10mm}node.right = kdTree(right\_points, level+1)\\
-\hspace*{10mm}return node\\
-
-\newpage
-
-looked\_at = [] \#for the visualization of looked at points\\
-\#function for performing rangeSearch on a KDTree\\
-def rangeSearch(node, rec, level=0):\\
-\hspace*{10mm}result = []\\
-\hspace*{10mm}\#determine if list should be split by x or y axis\\
-\hspace*{10mm}dim = level \% k\\
-    
-\hspace*{10mm}if type(node) is kdLeaf:\\
-\hspace*{10mm}\hspace*{10mm}looked\_at.append(node.value)\\
-\hspace*{10mm}\hspace*{10mm}\#check if point is within rectangle range\\
-\hspace*{10mm}\hspace*{10mm}if rec[0][0] <= node.value['x'] and rec[0][1] >= node.value['x']:\\
-\hspace*{10mm}\hspace*{10mm\hspace*{10mm}}if rec[1][0] <= node.value['y'] and rec[1][1] >= node.value['y']:\\
-\hspace*{10mm}\hspace*{10mm}\hspace*{10mm}\hspace*{10mm}result.append(node.value)\\
-\hspace*{10mm}else:\\
-\hspace*{10mm}\hspace*{10mm}if node.value > rec[dim][1]:\\
-\hspace*{10mm}\hspace*{10mm}\hspace*{10mm}\#median is to the right of rectangle\\
-\hspace*{10mm}\hspace*{10mm}\hspace*{10mm}left = rangeSearch(node.left, rec, level+1)\\
-\hspace*{10mm}\hspace*{10mm}\hspace*{10mm}for e in left:\\
-\hspace*{10mm}\hspace*{10mm}\hspace*{10mm}\hspace*{10mm}result.append(e)\\
-\hspace*{10mm}\hspace*{10mm}elif node.value < rec[dim][0]:\\
-\hspace*{10mm}\hspace*{10mm}\hspace*{10mm}\#median is to the left of rectangle\\
-\hspace*{10mm}\hspace*{10mm}\hspace*{10mm}right = rangeSearch(node.right, rec, level+1)\\
-\hspace*{10mm}\hspace*{10mm}\hspace*{10mm}for e in right:\\
-\hspace*{10mm}\hspace*{10mm}\hspace*{10mm}\hspace*{10mm}result.append(e)\\
-\hspace*{10mm}\hspace*{10mm}else:\\
-\hspace*{10mm}\hspace*{10mm}\hspace*{10mm}\#median is inside the rectangle\\
-\hspace*{10mm}\hspace*{10mm}\hspace*{10mm}left = rangeSearch(node.left, rec, level+1)\\
-\hspace*{10mm}\hspace*{10mm}\hspace*{10mm}right = rangeSearch(node.right, rec, level+1)\\
-\hspace*{10mm}\hspace*{10mm}\hspace*{10mm}for e in left:\\
-\hspace*{10mm}\hspace*{10mm}\hspace*{10mm}\hspace*{10mm}result.append(e)\\
-\hspace*{10mm}\hspace*{10mm}\hspace*{10mm}for e in right:\\
-\hspace*{10mm}\hspace*{10mm}\hspace*{10mm}\hspace*{10mm}result.append(e)\\
-\hspace*{10mm}return result\\
+k = 2 #given by task
+#function for building a KDTree
+def kdTree(points, level=0):
+    dim = level % k #determines if points should be split by x or y axis
+    axis = points[0].dtype.names[dim]
+    median = (np.sort(points, order=axis)[len(points)-1][axis] +
+            np.sort(points, order=axis)[0][axis]) / 2
+    node = kdNode()
+    node.value = median
+    #function that splits list into left and right
+    split_list = splitList(points, median, axis)
+    left_points = split_list[0]
+    if len(left_points) == 1:
+        node.left = kdLeaf()
+        node.left.value = left_points[0]
+    else:
+        node.left = kdTree(left_points, level+1)
+    right_points = split_list[1]
+    if len(right_points) == 1:
+        node.right = kdLeaf()
+        node.right.value = right_points[0]
+    else:
+        node.right = kdTree(right_points, level+1)
+    return node
+\end{python}
 
 \newpage
 
-Example Output for the full program using the 'points\_4.ply' dataset:\\
-\includegraphics{./images/task3.png}\\
-Shown are the min, max values of the dataset. Then the program waits for user input.\\
-After 'Enter' was pressed, a rectangle is randomly determined. In this case with the following dimensions:\\
-$x_{min}=-4101, x_{max}=6411, y_{min}=-6176, y_{max}=-1429$\\
-Then the time needed to calculate the results and the speedup from naive to kd approach are shown. The results themselves are for space reasons not displayed.\\
-Finally it is checked if the results are the same and a visualization for the kd approach is displayed.\\
+\begin{python}
+looked_at = [] #for the visualization of looked at points
+#function for performing rangeSearch on a KDTree
+def rangeSearch(node, rec, level=0):
+    result = []
+    #determine if list should be split by x or y axis
+    dim = level % k
+
+    if type(node) is kdLeaf:
+        looked_at.append(node.value)
+        #check if point is within rectangle range
+        if rec[0][0] <= node.value['x'] and rec[0][1] >= node.value['x']:
+        if rec[1][0] <= node.value['y'] and rec[1][1] >= node.value['y']:
+                result.append(node.value)
+    else:
+        if node.value > rec[dim][1]:
+            #median is to the right of rectangle
+            left = rangeSearch(node.left, rec, level+1)
+            for e in left:
+                result.append(e)
+        elif node.value < rec[dim][0]:
+            #median is to the left of rectangle
+            right = rangeSearch(node.right, rec, level+1)
+            for e in right:
+                result.append(e)
+        else:
+            #median is inside the rectangle
+            left = rangeSearch(node.left, rec, level+1)
+            right = rangeSearch(node.right, rec, level+1)
+            for e in left:
+                result.append(e)
+            for e in right:
+                result.append(e)
+    return result
+\end{python}
+
+\newpage
+
+Example Output for the full program using the 'points\_4.ply' dataset:
+\begin{center}
+  \includegraphics{./images/task3.png}
+\end{center}
+
+Shown are the min, max values of the dataset. Then the program waits for user input.
+After 'Enter' was pressed, a rectangle is randomly determined. In this case with the following dimensions:
+\[x_{min}=-4101, x_{max}=6411, y_{min}=-6176, y_{max}=-1429\]
+Then the time needed to calculate the results and the speedup from naive to kd approach are shown. The results themselves are for space reasons not displayed.
+Finally it is checked if the results are the same and a visualization for the kd approach is displayed.
 The Visualization shows all points of the dataset in blue, points of the result in green, looked at points in yellow, and the random rectangle in red.
 
 
