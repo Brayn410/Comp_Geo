@@ -1047,7 +1047,73 @@ The Visualization shows all points of the dataset in blue, points of the result 
 
 \newpage
 
-\section*{\large Exercise 4 (Nearest Neighbor Search in a kD Tree) {\normalsize \hfill (4 points)}}
+\section*{\large Exercise 4 (Nearest Neighbor Search in a kD-Tree) {\normalsize \hfill (4 points)}}
+
+Given the data strucutures developed in Exercise~3, the following computes the nearest
+point in a kd-tree $T$ to some given point $x$. The function \texttt{dist2d} simply
+computes the Euclidean distance.
+
+\begin{python}
+def findNearest(x, T, depth=0, dist=numpy.inf, best=None, trace=None):
+    if isinstance(T, kdTree):
+        d = dist2d(x, T.val)
+
+        if d < dist:
+            best = T.val
+            dist = d
+        if trace is not None:
+            trace.append(T.val)
+
+        axis = depth % 2
+        # determine execution order:
+        # if point is left of splitting axis, it makes more sense to search
+        # left first and vice versa
+        if x[axis] <= T.val[axis]:
+            # nearest point might be to the left of splitting value
+            if x[axis] - dist <= T.val[axis]:
+                (best, dist) = findNearest(x, T.l, depth+1, dist, best, trace)
+            # nearest point might be to the right of splitting value
+            if x[axis] + dist  > T.val[axis]:
+                (best, dist) = findNearest(x, T.r, depth+1, dist, best, trace)
+        else:
+            # search in reverse order
+            if x[axis] + dist  > T.val[axis]:
+                (best, dist) = findNearest(x, T.r, depth+1, dist, best, trace)
+            if x[axis] - dist <= T.val[axis]:
+                (best, dist) = findNearest(x, T.l, depth+1, dist, best, trace)
+
+    if isinstance(T, kdLeaf):
+        d = dist2d(x, T.val)
+        if d < dist:
+            best = T.val
+            dist = d
+        if trace is not None:
+            trace.append(T.val)
+
+    return (best, dist)
+\end{python}
+
+Sample output:
+
+\begin{verbatim}
+Using random point (3647.898462542077, -6824.534411519036)
+Time per Method:
+naive:   4.999666999538022 ms
+kdtree:  0.09604899969417602 ms
+Speedup: 52.053295874576186
+Both methods found same nearest point!
+\end{verbatim}
+
+with visualization given in Figure~\ref{fig:task4}: The input point set is colored in
+blue, the randomly chosen point in green and the nearest point found in red. The sequence
+of points that were looked at during the tree traversal is the path colored in yellow.
+
+\begin{figure}[hptb]
+  \centering
+  \includegraphics[width=0.98\textwidth]{images/task4.png}
+  \caption{Visualization of Exercise~4}
+  \label{fig:task4}
+\end{figure}
 
 \end{document}
 
