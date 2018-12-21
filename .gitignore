@@ -10,3 +10,4 @@
 *.run.xml
 *.bib.bak
 build/
+__pycache__/
